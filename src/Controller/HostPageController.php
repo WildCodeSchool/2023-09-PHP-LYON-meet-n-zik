@@ -4,10 +4,10 @@ namespace App\Controller;
 
 use App\Controller\AbstractController;
 
-class HostpageController extends AbstractController
+class HostPageController extends AbstractController
 {
     public function hostpage(): string
     {
-        return $this->twig->render('Home/hostpage.html.twig');
+        return $this->twig->render('Home/hosthome.html.twig');
     }
 }

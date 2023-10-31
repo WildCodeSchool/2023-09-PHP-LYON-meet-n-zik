@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Controller\AbstractController;
 
-class BandController extends AbstractController
+class BandPageController extends AbstractController
 {
     public function Bandpage(): string
     {

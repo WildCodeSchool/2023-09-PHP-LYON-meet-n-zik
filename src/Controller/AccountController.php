@@ -6,8 +6,8 @@ use App\Controller\AbstractController;
 
 class AccountController extends AbstractController
 {
-    public function index(): string
+    public function account(): string
     {
-        return $this->twig->render('signin/account.html.twig');
+        return $this->twig->render('Home/account.html.twig');
     }
 }
