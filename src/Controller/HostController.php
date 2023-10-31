@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Controller\AbstractController;
 
-class HostPageController extends AbstractController
+class HostController extends AbstractController
 {
     public function hostpage(): string
     {
