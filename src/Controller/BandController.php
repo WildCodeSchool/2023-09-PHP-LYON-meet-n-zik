@@ -6,7 +6,7 @@ use App\Controller\AbstractController;
 
 class BandController extends AbstractController
 {
-    public function bandPage(): string
+    public function index(): string
     {
         return $this->twig->render('Home/bandpage.html.twig');
     }
