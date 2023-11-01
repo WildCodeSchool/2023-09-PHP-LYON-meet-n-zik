@@ -14,16 +14,19 @@
 		<link rel="stylesheet" href="/assets/css/style.css"> {% block stylesheet %}{% endblock %}
 		</head>
 
-		<body class="container">
-			{% block nav %}
-				<nav>
+		<body class="container-fluid">
+				<nav class="container-fluid">
 					<ul>
-                    	<li><a href="">Accueil</a></li>
+						<li>
+							<strong>Meet and Zik</strong>
+						</li>
+					</ul>
+					<ul>
+						<li><a href="">Accueil</a></li>
 						<li><a href="">Connexion</a></li>
 						<li><a href="">Inscription</a></li>
 					</ul>
 				</nav>
-			{% endblock %}
 
 			{% block content %}{% endblock %}
 			{% block javascript %}{% endblock %}
