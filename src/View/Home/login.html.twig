@@ -1,5 +1,59 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>page de connexion</h1>
+	<h1>Page de connexion</h1>
+	<h2>Vous recevez des musiciens</h2>
+	<article>
+		<form action="" method="post">
+			<h3>Espace de connexion hôte</h3>
+			<fieldset>
+				<label for="UserName">Votre identifiant :
+				</label>
+				<input type="text" id="UserName" name="UserName" required placeholder="Eliase">
+			</fieldset>
+			<label for="email">Votre email :
+			</label>
+			<input type="email" id="email" name="email" required placeholder="lamarquise@gmail.com">
+			<fieldset>
+				<label for="password">Votre mot de passe :
+				</label>
+				<input type="password" id="password" name="password" required>
+			</fieldset>
+			<fieldset>
+				<label for="password">Confirmation du mot de passe :
+				</label>
+				<input type="password" id="password" name="password" required>
+			</fieldset>
+			<div class="buttonsLine">
+				<button type="submit">Connexion</button>
+			</div>
+		</form>
+	</article>
+    	<h2>Vous êtes musiciens</h2>
+	<article>
+		<form action="" method="post">
+			<h3>Espace de connexion musicien</h3>
+			<fieldset>
+				<label for="UserName">Votre identifiant :
+				</label>
+				<input type="text" id="UserName" name="UserName" required placeholder="Salt">
+			</fieldset>
+			<label for="email">Votre email :
+			</label>
+			<input type="email" id="email" name="email" required placeholder="saltgeneration@live.fr">
+			<fieldset>
+				<label for="password">Votre mot de passe :
+				</label>
+				<input type="password" id="password" name="password" required>
+			</fieldset>
+			<fieldset>
+				<label for="password">Confirmation du mot de passe :
+				</label>
+				<input type="password" id="password" name="password" required>
+			</fieldset>
+			<div class="buttonsLine">
+				<button type="submit">Connexion</button>
+			</div>
+		</form>
+	</article>
 {% endblock %}
