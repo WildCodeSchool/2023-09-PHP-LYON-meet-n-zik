@@ -1,0 +1,14 @@
+/* login.html.twig CSS */
+
+.loginPage h2, h3, h4{
+    text-align: center;
+}
+
+.loginPage h2{
+    margin-top: 16px;
+}
+
+.loginPage h3{
+    margin-top: 24px;
+}
+
