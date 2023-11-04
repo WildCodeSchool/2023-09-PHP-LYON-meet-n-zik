@@ -1,5 +1,66 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-<h1>page d'inscription</h1>
+	<div class="container loginPage">
+		<h2>Page de connexion</h2>
+		<article>
+			<header>
+				<h3>Vous recevez des musiciens</h3>
+			</header>
+			<form action="" method="post">
+				<h4>Espace de connexion hôte</h4>
+				<fieldset>
+					<label for="UserName">Votre identifiant :
+					</label>
+					<input type="text" id="UserName" name="UserName" required placeholder="Eliase">
+				</fieldset>
+				<label for="email">Votre email :
+				</label>
+				<input type="email" id="email" name="email" required placeholder="lamarquise@gmail.com">
+				<fieldset>
+					<label for="password">Votre mot de passe :
+					</label>
+					<input type="password" id="password" name="password" required>
+				</fieldset>
+				<fieldset>
+					<label for="password">Confirmation du mot de passe :
+					</label>
+					<input type="password" id="password" name="password" required>
+				</fieldset>
+				<div class="buttonsLine">
+					<button type="submit">Connexion</button>
+				</div>
+			</form>
+		</article>
+
+		<article>
+			<header>
+				<h3>Vous êtes musicien</h3>
+			</header>
+			<form action="" method="post">
+				<h4>Espace de connexion musicien</h4>
+				<fieldset>
+					<label for="UserName">Votre identifiant :
+					</label>
+					<input type="text" id="UserName" name="UserName" required placeholder="Salt">
+				</fieldset>
+				<label for="email">Votre email :
+				</label>
+				<input type="email" id="email" name="email" required placeholder="saltgeneration@live.fr">
+				<fieldset>
+					<label for="password">Votre mot de passe :
+					</label>
+					<input type="password" id="password" name="password" required>
+				</fieldset>
+				<fieldset>
+					<label for="password">Confirmation du mot de passe :
+					</label>
+					<input type="password" id="password" name="password" required>
+				</fieldset>
+				<div class="buttonsLine">
+					<button type="submit">Connexion</button>
+				</div>
+			</form>
+		</article>
+	</div>
 {% endblock %}
