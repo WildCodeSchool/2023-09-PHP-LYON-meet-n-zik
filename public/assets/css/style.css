@@ -14,8 +14,13 @@
 
 .loginPage article{
     background-image: url(../images/scene-on-fire.png);
-    background-size: auto 60%;
+    background-size: auto 75%;
     background-repeat: no-repeat;
     background-position: center;
 }
 
+@media (min-width: 576px) {
+    .loginPage article {
+        background-image: none;
+    }
+}
