@@ -1,25 +1,25 @@
 /* login.html.twig CSS */
 
-.loginPage, .signUpPage h2, h3, h4{
+.login-page, .sign-up-page h2, h3, h4{
     text-align: center;
 }
 
-.loginPage h2, .signUpPage h2{
+.login-page h2, .sign-up-page h2{
     margin-top: 16px;
 }
 
-.loginPage h3, .signUpPage h3{
+.login-page h3, .sign-up-page h3{
     margin: 24px;
 }
 
-.loginPage article{
+.login-page article{
     background-image: url(../images/scene-on-fire.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 }
 
-.signUpPage article{
+.sign-up-page article{
     background-image: url(../images/scene-on-fire.png);
     background-size: auto 75%;
     background-repeat: no-repeat;
@@ -27,13 +27,13 @@
 }
 
 @media (min-width: 576px) {
-    .signUpPage article, .loginPage article {
+    .sign-up-page article, .login-page article {
         background-image: none;
     }
 }
 
 @media (min-width: 768px) {
-    .signUpPage article, .loginPage article {
+    .sign-up-page article, .login-page article {
         background-image: url(../images/scene-paysage.png);
         background-size: auto 100%;
         width: 60%;
@@ -44,7 +44,7 @@
 }
 
 @media (min-width: 992px) {
-    .signUpPage article, .loginPage article {
+    .sign-up-page article, .login-page article {
         width: 50%;
     }
 }
