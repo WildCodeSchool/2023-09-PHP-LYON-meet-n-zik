@@ -1,5 +1,29 @@
-body {
-    color: #f76c6c;
+/* login.html.twig CSS */
+
+.login-page, .sign-up-page h2, h3, h4{
+    text-align: center;
+}
+
+.login-page h2, .sign-up-page h2{
+    margin-top: 16px;
+}
+
+.login-page h3, .sign-up-page h3{
+    margin: 24px;
+}
+
+.login-page article{
+    background-image: url(../images/scene-on-fire.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.sign-up-page article{
+    background-image: url(../images/scene-on-fire.png);
+    background-size: auto 75%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 /* mise en forme video d'en-tête */
@@ -20,19 +44,7 @@ body {
     z-index: 1;
   }
 
-@media (min-width: 768px) {
-    .video-header video {
-        max-height: 50vh;
-    }
-}
-
-@media (min-width: 1024px) {
-    .video-header video {
-        max-height: 100vh;
-    }
-}
-
-/* Bouton FIND */
+  /* Bouton FIND */
 
 .search-section {
     text-align: center;
@@ -63,3 +75,37 @@ body {
     text-transform: uppercase;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
+
+  /* MEDIA QUERIES */
+
+@media (min-width: 576px) {
+    .sign-up-page article, .login-page article {
+        background-image: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .sign-up-page article, .login-page article {
+        background-image: url(../images/scene-paysage.png);
+        background-size: auto 100%;
+        width: 60%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto 
+    }
+    .video-header video {
+        max-height: 50vh;
+    }
+}
+
+@media (min-width: 992px) {
+    .sign-up-page article, .login-page article {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .video-header video {
+        max-height: 100vh;
+    }
+}
