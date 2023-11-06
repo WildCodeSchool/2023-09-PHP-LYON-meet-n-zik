@@ -1,6 +1,52 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Hello Wilder !</h1>
-    <p>Find a complete CRUD example on <a href="/items">/items</a> page.</p>
+
+<!-- Section vidéo d'en-tête -->
+<section class="video-header">
+    <video autoplay muted loop id="heroVideo">
+        <source src="/assets/videos/header-video.mp4" type="video/mp4">
+        Votre navigateur ne prend pas en charge la vidéo.
+    </video>
+</section>
+
+<!-- Bouton pour accéder à la page "meet" -->
+<section class="find-section">
+    <div class="find-button">
+        <a href="/meet" class="btn">🔍</a>
+    </div>
+</section>
+
+<!-- Section des groupes à découvrir -->
+<section class="bands-section">
+    <h2>Les groupes à découvrir</h2>
+    <div class="bands-list">
+        {% for band in bands %}
+        <div class="band-item">
+            <img src="{{ band.image_url }}" alt="{{ band.name }}">
+            <h3>{{ band.name }}</h3>
+            <p>Genre : {{ band.style_name }}</p>
+            <p>Statut : {{ band.status_name }}</p>
+            <a href="/band/show/{{ band.id }}">Voir le groupe</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Section des salles à découvrir -->
+<section class="places-section">
+    <h2>Les salles à découvrir</h2>
+    <div class="places-list">
+        {% for place in places %}
+        <div class="place-item">
+            <img src="{{ place.image_url }}" alt="{{ place.name }}">
+            <h3>{{ place.name }}</h3>
+            <p>Genre : {{ place.style_name }}</p>
+            <p>Statut : {{ place.status_name }}</p>
+            <a href="/host/show/{{ place.id }}">Voir la salle</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
 {% endblock %}
