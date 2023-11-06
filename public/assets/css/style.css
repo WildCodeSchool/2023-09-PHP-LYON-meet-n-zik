@@ -12,19 +12,13 @@
     margin: 24px;
 }
 
-.login-page article{
+.login-page form, .sign-up-page form{
     background-image: url(../images/scene-on-fire.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-}
-
-.sign-up-page article{
-    background-image: url(../images/scene-on-fire.png);
-    background-size: auto 75%;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin: 0;
+    border-radius: 3px;
+    padding: 16px;
 }
 
 .choose-form{
@@ -35,6 +29,10 @@
 
 .choose-form button{
     width: 40%;
+}
+
+.hidden-background {
+    background-image: none;
 }
 
 /* mise en forme video d'en-tête */
@@ -100,36 +98,43 @@
 }
 
 @media (min-width: 576px) {
-    .sign-up-page article, .login-page article {
-        background-image: none;
-    }
-}
-
-@media (min-width: 768px) {
-    .sign-up-page article, .login-page article {
+    .sign-up-page form, .login-page form {
         background-image: url(../images/scene-paysage.png);
         background-size: auto 100%;
-        width: 63%;
+        width: 73%;
         display: block;
         margin-left: auto;
-        margin-right: auto 
+        margin-right: auto;
+        padding: 24px;
     }
-    .video-header video {
-        max-height: 50vh;
-    }
-
     .choose-form{
         justify-content: space-evenly;
     }
 
     .choose-form button{
-        width: 22%;
+        width: 30%;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .video-header video {
+        max-height: 50vh;
+    }
+
+    .sign-up-page form, .login-page form {
+        width: 57%;
+        padding: 40px;
+    }
+    .choose-form button{
+        width: 18%;
     }
 }
 
 @media (min-width: 992px) {
-    .sign-up-page article, .login-page article {
+    .sign-up-page form, .login-page form {
         width: 57%;
+        padding: 40px;
     }
     .choose-form button{
         width: 18%;
