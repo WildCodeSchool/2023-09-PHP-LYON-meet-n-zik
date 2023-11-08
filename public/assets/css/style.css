@@ -1,4 +1,4 @@
-/* login.html.twig CSS */
+/* login.html.twig CSS & signup.html.twig */
 
 .login-page, .sign-up-page h2, h3, h4{
     text-align: center;
@@ -12,18 +12,27 @@
     margin: 24px;
 }
 
-.login-page article{
+.login-page form, .sign-up-page form{
     background-image: url(../images/scene-on-fire.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    border-radius: 3px;
+    padding: 16px;
 }
 
-.sign-up-page article{
-    background-image: url(../images/scene-on-fire.png);
-    background-size: auto 75%;
-    background-repeat: no-repeat;
-    background-position: center;
+.choose-form{
+    display: flex;
+    justify-content:space-between;
+    margin: 0;
+}
+
+.choose-form button{
+    width: 40%;
+}
+
+.hidden-background {
+    background-image: none;
 }
 
 /* mise en forme video d'en-tête */
@@ -78,29 +87,57 @@
 
   /* MEDIA QUERIES */
 
+  @media (max-width: 320px) {
+    .choose-form{
+        flex-direction: column;
+        align-items: center;
+    }
+    .choose-form button{
+        width: 100%;
+    }
+}
+
 @media (min-width: 576px) {
-    .sign-up-page article, .login-page article {
-        background-image: none;
+    .sign-up-page form, .login-page form {
+        background-image: url(../images/scene-paysage.png);
+        background-size: auto 100%;
+        width: 73%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 24px;
+    }
+    .choose-form{
+        justify-content: space-evenly;
+    }
+
+    .choose-form button{
+        width: 30%;
     }
 }
 
 @media (min-width: 768px) {
-    .sign-up-page article, .login-page article {
-        background-image: url(../images/scene-paysage.png);
-        background-size: auto 100%;
-        width: 60%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto 
-    }
+
     .video-header video {
         max-height: 50vh;
+    }
+
+    .sign-up-page form, .login-page form {
+        width: 57%;
+        padding: 40px;
+    }
+    .choose-form button{
+        width: 18%;
     }
 }
 
 @media (min-width: 992px) {
-    .sign-up-page article, .login-page article {
-        width: 50%;
+    .sign-up-page form, .login-page form {
+        width: 57%;
+        padding: 40px;
+    }
+    .choose-form button{
+        width: 18%;
     }
 }
 

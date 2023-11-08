@@ -3,63 +3,61 @@
 {% block content %}
 	<div class="container sign-up-page">
 		<h2>Page d'inscription</h2>
-		<article>
-			<header>
-				<h3>Vous recevez des musiciens</h3>
-			</header>
-			<form action="" method="post">
-				<h4>Espace d'inscription hôte</h4>
-				<fieldset>
-					<label for="host-name">Votre identifiant :
+		<div class="choose-form">
+			<button id="btn1">Hôte</button>
+			<button id="btn2">Musicien</button>
+		</div>
+		<div id="form-container">
+				<form action="" method="post" id="form1">
+					<h4>Espace d'inscription hôte</h4>
+					<fieldset>
+						<label for="host-name">Votre identifiant :
+						</label>
+						<input type="text" id="host-name" name="host-name" required placeholder="Eliase">
+					</fieldset>
+					<label for="email">Votre email :
 					</label>
-					<input type="text" id="host-name" name="host-name" required placeholder="Eliase">
-				</fieldset>
-				<label for="email">Votre email :
-				</label>
-				<input type="email" id="email" name="email" required placeholder="lamarquise@gmail.com">
-				<fieldset>
-					<label for="password">Votre mot de passe :
+					<input type="email" id="email" name="email" required placeholder="lamarquise@gmail.com">
+					<fieldset>
+						<label for="host-password">Votre mot de passe :
+						</label>
+						<input type="password" id="host-password" name="host-password" minlength="8" required>
+					</fieldset>
+					<fieldset>
+						<label for="password">Confirmation du mot de passe :
+						</label>
+						<input type="password" id="host-password" name="host-password" minlength="8" required>
+					</fieldset>
+					<div class="buttons-line">
+						<button type="submit">Connexion</button>
+					</div>
+				</form>
+				<form action="" method="post" id="form2">
+					<h4>Espace d'inscription musicien</h4>
+					<fieldset>
+						<label for="band-name">Votre identifiant :
+						</label>
+						<input type="text" id="band-name" name="band-name" required placeholder="Salt">
+					</fieldset>
+					<label for="email">Votre email :
 					</label>
-					<input type="password" id="password" name="password" minlength="8" required>
-				</fieldset>
-				<fieldset>
-					<label for="password">Confirmation du mot de passe :
-					</label>
-					<input type="password" id="password" name="password" minlength="8" required>
-				</fieldset>
-				<div class="buttons-line">
-					<button type="submit">Connexion</button>
-				</div>
-			</form>
-		</article>
-		<article>
-			<header>
-				<h3>Vous êtes musicien</h3>
-			</header>
-			<form action="" method="post">
-				<h4>Espace d'inscription musicien</h4>
-				<fieldset>
-					<label for="band-name">Votre identifiant :
-					</label>
-					<input type="text" id="band-name" name="band-name" required placeholder="Salt">
-				</fieldset>
-				<label for="email">Votre email :
-				</label>
-				<input type="email" id="email" name="email" required placeholder="saltgeneration@live.fr">
-				<fieldset>
-					<label for="password">Votre mot de passe :
-					</label>
-					<input type="password" id="password" name="password" minlength="8" required>
-				</fieldset>
-				<fieldset>
-					<label for="password">Confirmation du mot de passe :
-					</label>
-					<input type="password" id="password" name="password" minlength="8" required>
-				</fieldset>
-				<div class="buttons-line">
-					<button type="submit">Connexion</button>
-				</div>
-			</form>
-		</article>
+					<input type="email" id="email" name="email" required placeholder="saltgeneration@live.fr">
+					<fieldset>
+						<label for="band-password">Votre mot de passe :
+						</label>
+						<input type="password" id="band-password" name="band-password" minlength="8" required>
+					</fieldset>
+					<fieldset>
+						<label for="band-password">Confirmation du mot de passe :
+						</label>
+						<input type="password" id="band-password" name="band-password" minlength="8" required>
+					</fieldset>
+					<div class="buttons-line">
+						<button type="submit">Connexion</button>
+					</div>
+				</form>
+		</div>
 	</div>
 {% endblock %}
+
+{% block javascript %}{% endblock %}

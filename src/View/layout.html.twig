@@ -13,32 +13,36 @@
 	</head>
 
 		<body class="container-fluid">
-				<nav class="container-fluid">
-					<ul>
-						<li>
-							<strong>Meet and Zik</strong>
-						</li>
-					</ul>
-					<ul>
-						<li>
-							<details role="list" dir="rtl">
-								<summary aria-haspopup="listbox" role="link">Menu</summary>
-								<ul role="listbox">
-									<li>
-										<a href="/">Accueil</a>
-									</li>
-									<li>
-										<a href="/login">Connexion</a>
-									</li>
-									<li>
-										<a href="/signup">Inscription</a>
-									</li>
-								</ul>
-							</details>
-						</li>
-					</ul>
-				</nav>
+			<nav class="container-fluid">
+				<ul>
+					<li>
+						<strong>Meet and Zik</strong>
+					</li>
+				</ul>
+				<ul>
+					<li>
+						<details role="list" dir="rtl">
+							<summary aria-haspopup="listbox" role="link">Menu</summary>
+							<ul role="listbox">
+								<li>
+									<a href="/">Accueil</a>
+								</li>
+								<li>
+									<a href="/login">Connexion</a>
+								</li>
+								<li>
+									<a href="/signup">Inscription</a>
+								</li>
+							</ul>
+						</details>
+					</li>
+				</ul>
+			</nav>
 			{% block content %}{% endblock %}
+			
 			{% block javascript %}{% endblock %}
-		</body>
-	</html>
+			<script src="/assets/script.js"></script>
+			</body>
+		</html>
+
+</body></html>
