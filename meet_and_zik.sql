@@ -28,7 +28,7 @@ CREATE TABLE `user` (
   `id` int NOT NULL AUTO_INCREMENT,
   `user_name` varchar(80) NOT NULL,
   `email` varchar(80) NOT NULL,
-  `password` varchar(30) NOT NULL,
+  `password` text NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `user_type_id` int NOT NULL,
   PRIMARY KEY (`id`),
@@ -84,4 +84,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-08 13:33:53
+-- Dump completed on 2023-11-09  9:56:59
