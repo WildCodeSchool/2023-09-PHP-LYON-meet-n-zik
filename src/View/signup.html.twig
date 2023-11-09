@@ -2,6 +2,12 @@
 
 {% block content %}
 	<div class="container sign-up-page">
+        <ul>{% for error in errors %}
+        <li>
+            {{ error }}
+        </li>
+            {% endfor %}
+        </ul>
 		<h2>Page d'inscription</h2>
 		<div class="choose-form">
 			<button id="btn1">Hôte</button>
@@ -26,7 +32,8 @@
 					<fieldset>
 						<label for="password">Confirmation du mot de passe :
 						</label>
-						<input type="password" id="host-password" name="host-password" minlength="8" required>
+						<input type="password" id="comfirm-password" name="comfirm-password" minlength="8" required>
+                        <input type="hidden" id="1"  name = "user_type_id" value="1">
 					</fieldset>
 					<div class="buttons-line">
 						<button type="submit">Connexion</button>
@@ -50,8 +57,9 @@
 					<fieldset>
 						<label for="band-password">Confirmation du mot de passe :
 						</label>
-						<input type="password" id="band-password" name="band-password" minlength="8" required>
-					</fieldset>
+						<input type="password" id="band-password" name="password" minlength="8" required>
+                        <input type="hidden" id="2"  name = "user_type_id" value="2">
+                    </fieldset>
 					<div class="buttons-line">
 						<button type="submit">Connexion</button>
 					</div>
