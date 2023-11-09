@@ -8,7 +8,7 @@ use App\Service\FormVerificationService;
 
 class UserController extends AbstractController
 {
-    public function addUser(): ?string
+    public function registration(): ?string
     {
         $errors = [];
 
