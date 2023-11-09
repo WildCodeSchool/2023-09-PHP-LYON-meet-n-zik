@@ -25,22 +25,20 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(80) NOT NULL,
-  `email` varchar(80) NOT NULL,
-  `password` varchar(30) NOT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `user_type_id` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_user_type` (`user_type_id`),
-  CONSTRAINT `fk_user_type` FOREIGN KEY (`user_type_id`) REFERENCES `user_type` (`id`)
+                        `id` int NOT NULL AUTO_INCREMENT,
+                        `user_name` varchar(80) NOT NULL,
+                        `email` varchar(80) NOT NULL,
+                        `password` text NOT NULL,
+                        `description` varchar(255) DEFAULT NULL,
+                        `user_type_id` int NOT NULL,
+                        PRIMARY KEY (`id`),
+                        KEY `fk_user_type` (`user_type_id`),
+                        CONSTRAINT `fk_user_type` FOREIGN KEY (`user_type_id`) REFERENCES `user_type` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
 --
 -- Dumping data for table `user`
 --
-
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` VALUES (1,'Salt','salt@gmail.com','motdepasseband','Nous sommes un groupe de rock régénérant',2),(2,'La machine','machine@live.fr','motdepassehost','Nous recevons des groupes de musicien de tous styles',1);
@@ -74,8 +72,8 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'meet_and_zik'
 --
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
@@ -84,4 +82,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-08 13:33:53
+-- Dump completed on 2023-11-09  9:56:59
+

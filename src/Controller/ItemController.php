@@ -56,31 +56,6 @@ class ItemController extends AbstractController
         ]);
     }
 
-    /**
-     * Add a new item
-     */
-    public function add(): ?string
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
-            $item = array_map('trim', $_POST);
-
-            // TODO validations (length, format...)
-
-            // if validation is ok, insert and redirection
-            $itemManager = new ItemManager();
-            $id = $itemManager->insert($item);
-
-            header('Location:/items/show?id=' . $id);
-            return null;
-        }
-
-        return $this->twig->render('Item/add.html.twig');
-    }
-
-    /**
-     * Delete a specific item
-     */
     public function delete(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

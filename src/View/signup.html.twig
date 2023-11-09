@@ -2,6 +2,11 @@
 
 {% block content %}
 	<div class="container sign-up-page">
+        <ul>
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
 		<h2>Page d'inscription</h2>
 		<div class="choose-form">
 			<button id="btn1">Hôte</button>
@@ -13,7 +18,7 @@
 					<fieldset>
 						<label for="host-name">Votre identifiant :
 						</label>
-						<input type="text" id="host-name" name="host-name" required placeholder="Eliase">
+						<input type="text" id="name" name="name" required placeholder="Eliase">
 					</fieldset>
 					<label for="email">Votre email :
 					</label>
@@ -21,12 +26,13 @@
 					<fieldset>
 						<label for="host-password">Votre mot de passe :
 						</label>
-						<input type="password" id="host-password" name="host-password" minlength="8" required>
+						<input type="password" id="password" name="password" minlength="8" required>
 					</fieldset>
 					<fieldset>
 						<label for="password">Confirmation du mot de passe :
 						</label>
-						<input type="password" id="host-password" name="host-password" minlength="8" required>
+						<input type="password" id="comfirm-password" name="comfirm-password" minlength="8" required>
+                        <input type="hidden" id="1"  name = "user_type_id" value="1">
 					</fieldset>
 					<div class="buttons-line">
 						<button type="submit">Connexion</button>
@@ -37,7 +43,7 @@
 					<fieldset>
 						<label for="band-name">Votre identifiant :
 						</label>
-						<input type="text" id="band-name" name="band-name" required placeholder="Salt">
+						<input type="text" id="name" name="name" required placeholder="Salt">
 					</fieldset>
 					<label for="email">Votre email :
 					</label>
@@ -45,13 +51,14 @@
 					<fieldset>
 						<label for="band-password">Votre mot de passe :
 						</label>
-						<input type="password" id="band-password" name="band-password" minlength="8" required>
+						<input type="password" id="password" name="password" minlength="8" required>
 					</fieldset>
 					<fieldset>
 						<label for="band-password">Confirmation du mot de passe :
 						</label>
-						<input type="password" id="band-password" name="band-password" minlength="8" required>
-					</fieldset>
+						<input type="password" id="band-password" name="password" minlength="8" required>
+                        <input type="hidden" id="2"  name = "user_type_id" value="2">
+                    </fieldset>
 					<div class="buttons-line">
 						<button type="submit">Connexion</button>
 					</div>
