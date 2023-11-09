@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Model\ItemManager;
-use Couchbase\User;
 
 class ItemController extends AbstractController
 {
