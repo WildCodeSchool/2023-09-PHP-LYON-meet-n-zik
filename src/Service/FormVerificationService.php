@@ -12,22 +12,22 @@ class FormVerificationService
     }
     public function formVerification($user): void
     {
-        if (empty($user['host-name'])) {
+        if (empty($user['name'])) {
             $this->errors[] = "Vous devez renseigner votre identifiant";
-        } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', $user["host-name"])) {
+        } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', $user["name"])) {
             $this->errors[] = "Votre pseudo ne peut contenir que des lettres, chiffres ou underscores";
         }
 
-        if (empty($user["host-password"])) {
+        if (empty($user["password"])) {
             $this->errors[] = "Vous devez renseigner un mot de passe";
-        } elseif (strlen($user["host-password"]) < 8) {
+        } elseif (strlen($user["password"]) < 8) {
             $this->errors[] = " Votre mot de passe doit avoir au moins 8 characters";
         }
 
         if (empty($user["comfirm-password"])) {
             $this->errors[] = "Confirmez votre mot de passe s'il vous plait";
         } else {
-            if (empty($this->errors) && ($user['host-password'] != $user["comfirm-password"])) {
+            if (empty($this->errors) && ($user['password'] != $user["comfirm-password"])) {
                 $this->errors[] = "Le mot de passe ne conrrespond pas ";
             }
         }
