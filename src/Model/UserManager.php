@@ -6,12 +6,12 @@ use App\Model\AbstractManager;
 
 class UserManager extends AbstractManager
 {
-    public const TABLEUSER = 'user';
+    public const TABLE = 'user';
 
     public function selectOneByEmail(string $email): array|false
     {
         // prepared request
-        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLEUSER . " WHERE email=:email");
+        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE email=:email");
         $statement->bindValue('email', $email, \PDO::PARAM_STR);
         $statement->execute();
 
@@ -21,7 +21,7 @@ class UserManager extends AbstractManager
     public function insert(array $credentials)
     {
         $statement = $this->pdo->prepare(
-            "INSERT INTO " . static::TABLEUSER .
+            "INSERT INTO " . static::TABLE .
             "(`user_name`, `email`, `password`, `user_type_id`)
             VALUES(:user_name,:email, :password, :user_type_id) "
         );
