@@ -28,7 +28,7 @@ class FormVerificationService
             $this->errors[] = "Confirmez votre mot de passe s'il vous plait";
         } else {
             if (empty($this->errors) && ($user['password'] != $user["comfirm-password"])) {
-                $this->errors[] = "Le mot de passe ne conrrespond pas ";
+                $this->errors[] = "Le mot de passe ne correspond pas ";
             }
         }
 

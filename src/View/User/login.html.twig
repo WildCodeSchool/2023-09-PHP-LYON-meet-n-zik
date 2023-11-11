@@ -2,21 +2,26 @@
 
 {% block content %}
 	<div class="container login-page">
-			<header>
-				<h3>Espace de connexion</h3>
-			</header>
-			<form action="" method="post">
-				<label for="email">Votre email :
+	    <ul>
+            {% for error in errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+		<header>
+			<h3>Espace de connexion</h3>
+		</header>
+		<form action="UserController.php" method="post">
+			<label for="email">Votre email :
+			</label>
+			<input type="email" id="email" name="email" required placeholder="lamarquise@gmail.com">
+			<fieldset>
+				<label for="password">Votre mot de passe :
 				</label>
-				<input type="email" id="email" name="email" required placeholder="lamarquise@gmail.com">
-				<fieldset>
-					<label for="password">Votre mot de passe :
-					</label>
-					<input type="password" id="password" name="password" required>
-				</fieldset>
-				<div class="buttons-line">
-					<button type="submit">Connexion</button>
-				</div>
-			</form>
+				<input type="password" id="password" name="password" required>
+			</fieldset>
+			<div class="buttons-line">
+				<button type="submit">Connexion</button>
+			</div>
+		</form>
 	</div>
 	{% endblock %}
