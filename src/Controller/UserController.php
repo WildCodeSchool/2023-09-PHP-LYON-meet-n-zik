@@ -38,7 +38,6 @@ class UserController extends AbstractController
 
             $loginVerification = new LoginFormVerificationService();
             $loginVerification->loginFormVerification($user);
-            $errors = $loginVerification->errors;
 
             if (empty($errors)) {
                 $userManager = new UserManager();

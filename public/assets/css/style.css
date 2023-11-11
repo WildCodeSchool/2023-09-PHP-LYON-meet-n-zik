@@ -21,7 +21,7 @@
     padding: 16px;
 }
 
-.sign-up-page article header{
+.login-page article header, .sign-up-page article header{
     background-color: rgb(85, 21, 21);
     text-align: center;
 }
