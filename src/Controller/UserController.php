@@ -29,6 +29,10 @@ class UserController extends AbstractController
     }
     public function login()
     {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $trimUser = array_map('trim', $_POST);
+            $user = array_map('htmlentities', $trimUser);
+        }
         return $this->twig->render('User/login.html.twig');
     }
 }
