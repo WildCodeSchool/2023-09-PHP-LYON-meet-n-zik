@@ -42,9 +42,9 @@ class UserController extends AbstractController
 
             if (empty($errors)) {
                 $userManager = new UserManager();
-                $userData = $userManager->selectUserNameOrEmail($user['username']);
+                $userData = $userManager->selectOneByEmail($user['email']);
                 if ($userData && password_verify($user['password'], $userData['password'])) {
-                    $_SESSION['user_id'] = $userData['id'];
+                    $_SESSION['user_id'] = $userData['password'];
                 } else {
                     $errors[] = "L'adresse mail ou le mot de passes sont incorrects";
                 }
