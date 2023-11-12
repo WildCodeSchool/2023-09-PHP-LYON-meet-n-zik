@@ -10,10 +10,9 @@ class LoginFormVerificationService
     {
         $this->errors = [];
     }
-
     public function loginFormVerification($user): void
     {
-        if (empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+        if (empty($user['email']) || !filter_var($user['email'], FILTER_VALIDATE_EMAIL)) {
             $this->errors[] = "L'adresse mail doit être renseignée dans un format approprié";
         }
         if (empty($user['password'])) {

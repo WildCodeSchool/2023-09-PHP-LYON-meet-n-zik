@@ -38,6 +38,7 @@ class UserController extends AbstractController
 
             $loginVerification = new LoginFormVerificationService();
             $loginVerification->loginFormVerification($user);
+            $errors = $loginVerification->errors;
 
             if (empty($errors)) {
                 $userManager = new UserManager();
@@ -48,8 +49,9 @@ class UserController extends AbstractController
                     $errors[] = "L'adresse mail ou le mot de passes sont incorrects";
                 }
                 header('Location:/');
+                exit();
             }
         }
-        return $this->twig->render('User/login.html.twig', ['errors' => $errors]);
+        return $this->twig->render('login.html.twig', ['errors' => $errors]);
     }
 }
