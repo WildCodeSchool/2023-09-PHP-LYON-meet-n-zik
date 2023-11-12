@@ -31,4 +31,17 @@ class UserManager extends AbstractManager
         $statement->bindValue(':user_type_id', $credentials['user_type_id'], \PDO::PARAM_STR);
         $statement->execute();
     }
+
+// login with email OR user_name
+    public function selectUserNameOrEmail(string $userName): array|false
+    {
+        $statement = $this->pdo->prepare(
+            "SELECT * FROM " . static::TABLE .
+            " WHERE user_name = :username OR email = :username"
+        );
+        $statement->bindValue(':username', $userName, \PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
 }
