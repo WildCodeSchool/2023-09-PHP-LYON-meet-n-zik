@@ -26,6 +26,11 @@
     text-align: center;
 }
 
+.login-page ul li, .sign-up-page ul li{
+    list-style: none;
+    text-align: center;
+}
+
 .choose-form{
     display: flex;
     justify-content:space-between;
