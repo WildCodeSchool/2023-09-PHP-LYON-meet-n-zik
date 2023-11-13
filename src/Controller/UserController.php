@@ -55,4 +55,14 @@ class UserController extends AbstractController
         }
         return $this->twig->render('login.html.twig');
     }
+
+    public function logout()
+    {
+        if (isset($_SESSION['user_id'])) {
+            unset($_SESSION['user_id']);
+        }
+
+        header('Location:/');
+        exit();
+    }
 }
