@@ -30,6 +30,10 @@ class UserController extends AbstractController
 
     public function login()
     {
+        if (isset($_SESSION['user_id'])) {
+            header('Location:/');
+            exit();
+        }
         $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $dataTrimed = array_map('trim', $_POST);

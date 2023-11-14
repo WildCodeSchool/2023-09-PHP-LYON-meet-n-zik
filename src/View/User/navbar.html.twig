@@ -4,6 +4,13 @@
 			<strong>Meet and Zik</strong>
 		</li>
 	</ul>
+    {% if user %}
+    <ul>
+		<li>
+			<strong>Bienvenue {{ user.user_name|capitalize }}</strong>
+		</li>
+	</ul>
+    {% endif %}
 	<ul>
 		<li>
 			<details role="list" dir="rtl">
