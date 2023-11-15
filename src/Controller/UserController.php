@@ -77,4 +77,31 @@ class UserController extends AbstractController
         header('Location:/');
         exit();
     }
+
+    // Method to display a profil
+    public function showBand(): string
+    {
+        if (isset($_SESSION['user_id'])) {
+            $userManager = new UserManager();
+            $users = $userManager->selectAll('id');
+
+            return $this->twig->render('User/band-profil.html.twig', ['users' => $users]);
+        } else {
+            header('Location: /');
+            die();
+        }
+    }
+
+    public function showHost(): string
+    {
+        if (isset($_SESSION['user_id'])) {
+            $userManager = new UserManager();
+            $users = $userManager->selectAll('id');
+
+            return $this->twig->render('User/band-profil.html.twig', ['users' => $users]);
+        } else {
+            header('Location: /');
+            die();
+        }
+    }
 }

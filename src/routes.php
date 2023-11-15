@@ -11,7 +11,7 @@ return [
     'login' => ['UserController', 'login',],
     'logout' => ['UserController', 'logout'],
     'signup' => ['UserController', 'registration',],
-    'host/show' => ['HostController', 'index',['id']],
-    'band/show' => ['BandController', 'index',['id']],
+    'host/show' => ['UserController', 'showHost',['id']],
+    'band/show' => ['UserController', 'showBand',['id']],
     'account' => ['AccountController', 'account',],
 ];
