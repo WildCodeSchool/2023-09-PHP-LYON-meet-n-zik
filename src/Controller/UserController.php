@@ -61,6 +61,8 @@ class UserController extends AbstractController
                     $errors[] = $error;
                     return $this->twig->render('login.html.twig', ['errors' => $errors]);
                 }
+            } else {
+                return $this->twig->render('login.html.twig', ['errors' => $errors]);
             }
         }
         return $this->twig->render('login.html.twig');
