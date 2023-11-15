@@ -98,7 +98,7 @@ class UserController extends AbstractController
             $userManager = new UserManager();
             $users = $userManager->selectAll('id');
 
-            return $this->twig->render('User/band-profil.html.twig', ['users' => $users]);
+            return $this->twig->render('User/host-profil.html.twig', ['users' => $users]);
         } else {
             header('Location: /');
             die();
