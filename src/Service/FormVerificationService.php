@@ -24,7 +24,7 @@ class FormVerificationService
             $this->errors[] = " Votre mot de passe doit avoir au moins 8 characters";
         }
 
-        if (empty($user["comfirm-password"])) {
+        if (empty($user["confirm-password"])) {
             $this->errors[] = "Confirmez votre mot de passe s'il vous plait";
         } else {
             if (empty($this->errors) && ($user['password'] != $user["confirm-password"])) {

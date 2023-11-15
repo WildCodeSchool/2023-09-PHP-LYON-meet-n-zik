@@ -43,18 +43,24 @@ class UserController extends AbstractController
                 $error = "L'adresse mail doit être renseignée au bon format.";
                 $errors[] = $error;
             }
-            $userManager = new UserManager();
-
-            $user = $userManager->selectOneByEmail($credentials['email']);
-
-            if ($user && password_verify($credentials['password'], $user['password'])) {
-                $_SESSION['user_id'] = $user['id'];
-                header('Location:/');
-                exit();
-            } else {
-                $error = "Vérifier l'adresse mail ou le mot de passe.";
+            if (empty($credentials['password'])) {
+                $error = "Vous devez renseigner un mot de passe";
                 $errors[] = $error;
-                return $this->twig->render('login.html.twig', ['errors' => $errors]);
+            }
+            if (empty($errors)) {
+                $userManager = new UserManager();
+
+                $user = $userManager->selectOneByEmail($credentials['email']);
+
+                if ($user && password_verify($credentials['password'], $user['password'])) {
+                    $_SESSION['user_id'] = $user['id'];
+                    header('Location:/');
+                    exit();
+                } else {
+                    $error = "Veuillez vérifier l'adresse mail ou le mot de passe.";
+                    $errors[] = $error;
+                    return $this->twig->render('login.html.twig', ['errors' => $errors]);
+                }
             }
         }
         return $this->twig->render('login.html.twig');
