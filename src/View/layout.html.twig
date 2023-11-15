@@ -7,42 +7,20 @@
 		<link rel="icon" href="/assets/images/favicon.png">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
 		<title>
-			{% block title %}{% endblock %}
+			{% block title %}Meet & zik{% endblock %}
 		</title>
-		<link rel="stylesheet" href="/assets/css/style.css"> {% block stylesheet %}{% endblock %}
+		<link rel="stylesheet" href="/assets/css/style.css"> 
+		{% block stylesheet %}{% endblock %}
 	</head>
 
 		<body class="container-fluid">
-			<nav class="container-fluid">
-				<ul>
-					<li>
-						<strong>Meet and Zik</strong>
-					</li>
-				</ul>
-				<ul>
-					<li>
-						<details role="list" dir="rtl">
-							<summary aria-haspopup="listbox" role="link">Menu</summary>
-							<ul role="listbox">
-								<li>
-									<a href="/">Accueil</a>
-								</li>
-								<li>
-									<a href="/login">Connexion</a>
-								</li>
-								<li>
-									<a href="/signup">Inscription</a>
-								</li>
-							</ul>
-						</details>
-					</li>
-				</ul>
-			</nav>
+			{% block navbar %}
+				{% include "User/navbar.html.twig" %}
+			{% endblock %}
+			
 			{% block content %}{% endblock %}
 			
 			{% block javascript %}{% endblock %}
 			<script src="/assets/script.js"></script>
-			</body>
-		</html>
-
-</body></html>
+		</body>
+</html>
