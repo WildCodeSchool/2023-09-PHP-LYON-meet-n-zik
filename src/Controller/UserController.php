@@ -52,7 +52,7 @@ class UserController extends AbstractController
                 header('Location:/');
                 exit();
             } else {
-                $error = "L'adresse e-mail ou le mot de passe est incotrect.";
+                $error = "Vérifier l'adresse mail ou le mot de passe.";
                 $errors[] = $error;
                 return $this->twig->render('login.html.twig', ['errors' => $errors]);
             }
