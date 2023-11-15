@@ -31,4 +31,18 @@ class UserController extends AbstractController
     {
         return $this->twig->render('User/login.html.twig');
     }
+    public function userIndex(): string
+    {
+    /*    if ($_SESSION['user_type_id' == 2]) {
+            $userManager = new UserManager();
+            $users = $userManager->selectAllHost('email');
+            header('Location :/meet', ['users' => $users]);
+        } elseif ($_SESSION['user_type_id' == 1]) {
+            $userManager = new UserManager();
+            $users = $userManager->selectAllBand('email');
+            header('Location :/meet', ['users' => $users]);
+        }*/
+        return $this->twig->render('User/meet.html.twig');
+        //return $this->twig->render('HTTP/1.1 401 Unauthorized');
+    }
 }
