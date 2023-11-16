@@ -32,7 +32,12 @@ nav ul:nth-of-type(2){
     text-align: center;
 }
 
-.login-page ul li, .sign-up-page ul li{
+.edit-error{
+    background-color: rgb(85, 21, 21);
+    text-align: center;
+}
+
+.login-page ul li, .sign-up-page ul li, .edit-page ul li{
     list-style: none;
     text-align: center;
 }

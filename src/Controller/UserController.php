@@ -99,21 +99,31 @@ class UserController extends AbstractController
     public function editProfil(int $id): ?string
     {
         $userManager = new UserManager();
+        $credentials = $userManager->selectOneById($id);
+        $errors = [];
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-              // clean $_POST data
-              $user = array_map('trim', $_POST);
-              // TODO validations (length, format...)
-              // if validation is ok, update and redirection
-              $userManager->update($user);
-              header('Location: /account?id=' . $id);
-              // we are redirecting so we don't want any content rendered
-              return null;
+              $dataTrimed = array_map('trim', $_POST);
+              $credentials = array_map('htmlentities', $dataTrimed);
+
+            if (empty($credentials['user_name'])) {
+                $error = "Vous devez renseigner votre nom";
+                $errors[] = $error;
+            } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', $credentials['user_name'])) {
+                $error[] = "Votre pseudo ne peut contenir que des lettres, chiffres ou underscores";
+                $errors[] = $error;
+            }
+            if (!filter_var($credentials["email"], FILTER_VALIDATE_EMAIL)) {
+                $error[] = "L'adresse mail doit être renseignée au bon format.";
+                $errors[] = $error;
+            }
+            if (empty($errors)) {
+                $userManager->update($credentials);
+                header('Location: /account?id=' . $id);
+                return null;
+            } else {
+                return $this->twig->render('User/edit-user-profil.html.twig', ['errors' => $errors]);
+            }
         }
-
-        $user = $userManager->selectOneById($id);
-
-        return $this->twig->render('User/edit-user-profil.html.twig', [
-            'user' => $user,
-        ]);
+        return $this->twig->render('User/edit-user-profil.html.twig', ['user' => $credentials]);
     }
 }
