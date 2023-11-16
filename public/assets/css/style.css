@@ -21,6 +21,16 @@
     padding: 16px;
 }
 
+.login-page article header, .sign-up-page article header{
+    background-color: rgb(85, 21, 21);
+    text-align: center;
+}
+
+.login-page ul li, .sign-up-page ul li{
+    list-style: none;
+    text-align: center;
+}
+
 .choose-form{
     display: flex;
     justify-content:space-between;

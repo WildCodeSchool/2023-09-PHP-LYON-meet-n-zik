@@ -27,22 +27,70 @@ class UserController extends AbstractController
         }
         return $this->twig->render('signup.html.twig', ['errors' => $errors]);
     }
+
     public function login()
     {
-        return $this->twig->render('User/login.html.twig');
+        if (isset($_SESSION['user_id'])) {
+            header('Location:/');
+            exit();
+        }
+        $errors = [];
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $dataTrimed = array_map('trim', $_POST);
+            $credentials = array_map('htmlentities', $dataTrimed);
+
+            if (!filter_var($credentials['email'], FILTER_VALIDATE_EMAIL)) {
+                $error = "L'adresse mail doit être renseignée au bon format.";
+                $errors[] = $error;
+            }
+            if (empty($credentials['password'])) {
+                $error = "Vous devez renseigner un mot de passe";
+                $errors[] = $error;
+            }
+            if (empty($errors)) {
+                $userManager = new UserManager();
+
+                $user = $userManager->selectOneByEmail($credentials['email']);
+
+                if ($user && password_verify($credentials['password'], $user['password'])) {
+                    $_SESSION['user_id'] = $user['id'];
+                    header('Location:/');
+                    exit();
+                } else {
+                    $error = "Veuillez vérifier l'adresse mail ou le mot de passe.";
+                    $errors[] = $error;
+                    return $this->twig->render('login.html.twig', ['errors' => $errors]);
+                }
+            } else {
+                return $this->twig->render('login.html.twig', ['errors' => $errors]);
+            }
+        }
+        return $this->twig->render('login.html.twig');
+    }
+
+    public function logout()
+    {
+        if (isset($_SESSION['user_id'])) {
+            unset($_SESSION['user_id']);
+        }
+
+        header('Location:/');
+        exit();
     }
     public function userIndex(): string
     {
-    /*    if ($_SESSION['user_type_id' == 2]) {
+        $userManager = new UserManager();
+        $user = $userManager->selectOneById($_SESSION['user_id']);
+        $users = [];
+
+        if ($user['user_type_id'] == 2) {
             $userManager = new UserManager();
-            $users = $userManager->selectAllHost('email');
-            header('Location :/meet', ['users' => $users]);
-        } elseif ($_SESSION['user_type_id' == 1]) {
+            $users = $userManager->selectAllHost();
+        } elseif ($user['user_type_id'] == 1) {
             $userManager = new UserManager();
-            $users = $userManager->selectAllBand('email');
-            header('Location :/meet', ['users' => $users]);
-        }*/
-        return $this->twig->render('User/meet.html.twig');
+            $users = $userManager->selectAllBand();
+        }
+        return $this->twig->render('User/meet.html.twig', ['users' => $users]);
         //return $this->twig->render('HTTP/1.1 401 Unauthorized');
     }
 }

@@ -1,0 +1,38 @@
+<nav class="container-fluid">
+	<ul>
+		<li>
+			<strong>Meet and Zik</strong>
+		</li>
+	</ul>
+    {% if user %}
+    <ul>
+		<li>
+			<strong>Bienvenue {{ user.user_name|capitalize }}</strong>
+		</li>
+	</ul>
+    {% endif %}
+	<ul>
+		<li>
+			<details role="list" dir="rtl">
+				<summary aria-haspopup="listbox" role="link">Menu</summary>
+				<ul role="listbox">
+					<li>
+						<a href="/">Accueil</a>
+					</li>
+					{% if user %}
+					<li>
+						<a href="/logout">Se deconnecter</a>
+					</li>
+                    {% else %}
+                    <li>
+						<a href="/login">Connexion</a>
+					</li>
+					<li>
+						<a href="/signup">Inscription</a>
+					</li>
+					{% endif %}
+				</ul>
+			</details>
+		</li>
+	</ul>
+</nav>
