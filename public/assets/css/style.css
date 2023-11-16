@@ -115,10 +115,16 @@ iframe{
     width: 100%;
 }
 
+.profil-page button{
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
   /*************************/
 
 /* edit-user-profil.html.twig */
-.profil-page button{
+.edit-page button{
     width: 50%;
     margin: 0 auto;
 
@@ -156,8 +162,12 @@ iframe{
         width: 30%;
     }
 
-    .profil-page button{
+    .edit-page button{
         width: 30%;    
+    }
+
+    .profil-page button{
+        width: 50%;
     }
 }
 
@@ -174,8 +184,11 @@ iframe{
     .choose-form button{
         width: 18%;
     }
-    .profil-page button{
+    .edit-page button{
         width: 24%;    
+    }
+    .profil-page button{
+        width: 40%;
     }
 }
 
@@ -187,8 +200,11 @@ iframe{
     .choose-form button{
         width: 18%;
     }
-    .profil-page button{
+    .edit-page button{
         width: 24%;    
+    }
+    .profil-page button{
+        width: 30%;
     }
 }
 
