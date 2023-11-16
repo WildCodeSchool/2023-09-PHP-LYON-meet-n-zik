@@ -93,4 +93,27 @@ class UserController extends AbstractController
             die();
         }
     }
+
+  // Method to edit a profil
+
+    public function editProfil(int $id): ?string
+    {
+        $userManager = new UserManager();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+              // clean $_POST data
+              $user = array_map('trim', $_POST);
+              // TODO validations (length, format...)
+              // if validation is ok, update and redirection
+              $userManager->update($user);
+              header('Location: /account?id=' . $id);
+              // we are redirecting so we don't want any content rendered
+              return null;
+        }
+
+        $user = $userManager->selectOneById($id);
+
+        return $this->twig->render('User/edit-user-profil.html.twig', [
+            'user' => $user,
+        ]);
+    }
 }

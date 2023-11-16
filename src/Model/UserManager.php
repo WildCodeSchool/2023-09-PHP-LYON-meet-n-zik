@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use App\Model\AbstractManager;
+use PDO;
 
 class UserManager extends AbstractManager
 {
@@ -43,5 +44,21 @@ class UserManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetch();
+    }
+
+        /**
+     * Update profil in database
+     */
+    public function update(array $user): bool
+    {
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
+        " SET `user_name` = :user_name, `email` = :email, `description` = :description, `video` = :video WHERE id=:id");
+        $statement->bindValue(':id', $user['id'], PDO::PARAM_INT);
+        $statement->bindValue(':user_name', $user['user_name'], PDO::PARAM_STR);
+        $statement->bindValue(':email', $user['email'], PDO::PARAM_STR);
+        $statement->bindValue(':description', $user['description'], PDO::PARAM_STR);
+        $statement->bindValue(':video', $user['video'], PDO::PARAM_STR);
+
+        return $statement->execute();
     }
 }

@@ -1,0 +1,50 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<div class="container profil-page">
+		{% for error in errors %}
+			<article>
+				<header>
+					Vérifier les informations saisies
+				</header>
+				<ul>
+					<li>{{ error }}</li>
+				</ul>
+			</article>
+		{% endfor %}
+		<h3>Edition de votre profil</h3>
+		<form method="post">
+			<input type="hidden" value="{{ user.id }}" name="id">
+			<article>
+				<label for="name">Entrer votre nouveau nom</label>
+				<input type="text" value="{{ user.user_name }}" name="user_name" id="name">
+			</article>
+			<article>
+				<label for="email">Entrer votre nouveau mail</label>
+				<input type="email" value="{{ user.email }}" name="email" id="email">
+			</article>
+			<article>
+				<header>
+					<label for="description">Entrer votre nouvelle description</label>
+					<input type="text" value="{{ user.description }}" name="description" id="description">
+				</header>
+				<p>Votre description actuelle</p>
+				{{ user.description }}
+			</article>
+			<article class="video">
+				<header>
+					<label for="video">Entrer votre nouveau lien youtube</label>
+					<input type="text" value="{{ user.video }}" name="video" id="video">
+				</header>
+				<p>Votre vidéo actuelle</p>
+				{% if user.video %}
+					{% set videoId = user.video|split('/')|last|split('?')|first %}
+					{% set embedLink = 'https://www.youtube.com/embed/' ~ videoId %}
+
+					<iframe width="560" height="315" src="{{ embedLink }}" frameborder="0" allowfullscreen></iframe>
+				{% endif %}
+			</article>
+			<button>Valider</button>
+		</form>
+	</div>
+{% endblock %}

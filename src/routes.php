@@ -12,4 +12,5 @@ return [
     'logout' => ['UserController', 'logout'],
     'signup' => ['UserController', 'registration',],
     'account' => ['UserController', 'showUser',['id']],
+    'account/edit' => ['UserController', 'editProfil',['id']],
 ];
