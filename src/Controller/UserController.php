@@ -100,22 +100,14 @@ class UserController extends AbstractController
     {
         $userManager = new UserManager();
         $credentials = $userManager->selectOneById($id);
-        $errors = [];
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-              $dataTrimed = array_map('trim', $_POST);
-              $credentials = array_map('htmlentities', $dataTrimed);
 
-            if (empty($credentials['user_name'])) {
-                $error = "Vous devez renseigner votre nom";
-                $errors[] = $error;
-            } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', $credentials['user_name'])) {
-                $error[] = "Votre pseudo ne peut contenir que des lettres, chiffres ou underscores";
-                $errors[] = $error;
-            }
-            if (!filter_var($credentials["email"], FILTER_VALIDATE_EMAIL)) {
-                $error[] = "L'adresse mail doit être renseignée au bon format.";
-                $errors[] = $error;
-            }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $dataTrimed = array_map('trim', $_POST);
+            $credentials = array_map('htmlentities', $dataTrimed);
+
+            $formVerification = new FormVerificationService();
+            $formVerification->editProfilVerfication($credentials);
+            $errors = $formVerification->errors;
             if (empty($errors)) {
                 $userManager->update($credentials);
                 header('Location: /account?id=' . $id);
