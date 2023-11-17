@@ -2,7 +2,7 @@
 
 {% block content %}
 	<div class="container profil-page">
-			<h3>Votre profil</h3>
+		<h3>Votre profil</h3>
 		<article>
 			<header>
 				<p>Nom</p>
@@ -34,6 +34,8 @@
 				<p>Aucune vidéo disponible pour cet utilisateur.</p>
 			{% endif %}
 		</article>
-		<button><a href="/account/edit/?id={{ user.id }}" role="button">Editer votre profil</a></button>
+		<div class="button-access">
+			<a href="/account/edit/?id={{ user.id }}" role="button">Editer votre profil</a>
+		</div>
 	</div>
 {% endblock %}
