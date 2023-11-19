@@ -41,7 +41,7 @@
 					{% set videoId = user.video|split('/')|last|split('?')|first %}
 					{% set embedLink = 'https://www.youtube.com/embed/' ~ videoId %}
 
-					<iframe width="560" height="315" src="{{ embedLink }}" frameborder="0" allowfullscreen></iframe>
+					<iframe src="{{ embedLink }}"></iframe>
 				{% endif %}
 			</article>
 			<button>Valider</button>
