@@ -20,4 +20,7 @@ return [
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
     'meet' => ['UserController', 'userIndex'],
+    'account' => ['UserController', 'showUser',['id']],
+    'account/edit' => ['UserController', 'editProfil',['id']],
+
 ];
