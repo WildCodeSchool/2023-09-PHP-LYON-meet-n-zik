@@ -1,3 +1,9 @@
+/******* Navbar ********/
+nav ul:nth-of-type(2){
+    text-align: center;
+}
+/***********************/
+
 /* login.html.twig CSS & signup.html.twig */
 
 .login-page, .sign-up-page h2, h3, h4{
@@ -26,7 +32,12 @@
     text-align: center;
 }
 
-.login-page ul li, .sign-up-page ul li{
+.edit-error{
+    background-color: rgb(85, 21, 21);
+    text-align: center;
+}
+
+.login-page ul li, .sign-up-page ul li, .edit-page ul li{
     list-style: none;
     text-align: center;
 }
@@ -95,6 +106,42 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
+  /* user-profil.html.twig & edit-user-profil*/
+.profil-page h3, .edit-page h3{
+    margin: 32px;
+}
+
+article {
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+}
+
+iframe{
+    width: 100%;
+    height: 315px;
+    margin: 0 auto;
+    border-radius: 3px;;
+}
+
+.button-access{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
+
+  /*************************/
+
+/* edit-user-profil.html.twig */
+
+.edit-page button{
+    width: 50%;
+    margin: 40px auto;
+}
+
+/*************************/
+
   /* MEDIA QUERIES */
 
   @media (max-width: 320px) {
@@ -124,6 +171,14 @@
     .choose-form button{
         width: 30%;
     }
+
+    .edit-page button{
+        width: 35%;    
+    }
+
+    .profil-page button{
+        width: 50%;
+    }
 }
 
 @media (min-width: 768px) {
@@ -139,6 +194,25 @@
     .choose-form button{
         width: 18%;
     }
+    .edit-page button{
+        width: 30%;    
+    }
+    .profil-page button{
+        width: 40%;
+    }
+    article {
+        text-align: initial;
+    }
+
+    .profil-page form, .edit-page form{
+        margin: 0 auto;
+        width: 73%;
+    }
+
+    .profil-page article {
+        margin: 32px auto;
+        width: 73%;
+    }
 }
 
 @media (min-width: 992px) {
@@ -148,6 +222,16 @@
     }
     .choose-form button{
         width: 18%;
+    }
+    .edit-page button{
+        width: 35%;    
+    }
+    .profil-page button{
+        width: 30%;
+    }
+    .profil-page form, .edit-page form{
+        margin: 0 auto;
+        width: 70%;
     }
 }
 

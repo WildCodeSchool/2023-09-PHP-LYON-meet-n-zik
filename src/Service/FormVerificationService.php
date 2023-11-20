@@ -36,4 +36,24 @@ class FormVerificationService
             $this->errors[] = "L'adresse email n'est pas au bon format";
         }
     }
+
+    public function editProfilVerfication($credentials): void
+    {
+        if (empty($credentials['user_name'])) {
+            $this->errors[] = "Vous devez renseigner votre nom";
+        } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', $credentials['user_name'])) {
+            $this->errors[] = "Votre pseudo ne peut contenir que des lettres, chiffres ou underscores";
+        }
+        if (!filter_var($credentials['email'], FILTER_VALIDATE_EMAIL)) {
+            $this->errors[] = "L'adresse mail doit être renseignée au bon format.";
+        }
+        if (empty($credentials['description'])) {
+            $this->errors[] = "Vous devez renseigner une descritpion.";
+        } elseif (strlen($credentials['description']) < 20 || strlen($credentials['description']) > 500) {
+            $this->errors[] = "Votre description doit faire entre 20 et 500 caractères.";
+        }
+        if (!filter_var($credentials['video'], FILTER_VALIDATE_URL)) {
+            $this->errors[] = 'Le lien vidéo n\' est pas valide';
+        }
+    }
 }
