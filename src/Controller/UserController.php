@@ -140,6 +140,7 @@ class UserController extends AbstractController
             if ($user) {
                 $userManager = new UserManager();
                 $matches = $userManager->matchedIndex($user['id']);
+                var_dump($matches);
 
                 return $this->twig->render('User/user-matches.html.twig', ['matches' => $matches]);
             }

@@ -1,10 +1,10 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-	<div class="container likes-page">
-		<h3>Mes likes</h3>
-<pre>
-	{{ dump(user.name) }}
-</pre>
+	<div class="container matches-page">
+		<h3>Mes matches</h3>
+{% for match in matches %}
+   
+{% endfor %}
 	</div>
 {% endblock %}
