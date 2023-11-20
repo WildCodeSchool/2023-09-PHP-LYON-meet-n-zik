@@ -93,11 +93,25 @@ class UserController extends AbstractController
         }
         return $this->twig->render('User/meet.html.twig', ['users' => $users]);
     }
-    public function likeUser($likerId, $likeeId) {
-        $this->UserManager->likeUser($likerId, $likeeId);
-        $likedUsers = $this->userModel->getLikedUsers($likerId);
+    public function likeUser($user, $target)
+    {
 
+        $userManager = new UserManager();
+        $user = $userManager->selectOneById($_SESSION['user_id']);
+
+        $userManager = new UserManager();
+        $matching = $userManager->matching($user, $target);
+
+        if (!$matching) {
+            if ($user['user_type_id'] == 2) {
+                $userManager = new UserManager();
+                $userManager->likedAsBand($user, $target);
+            } elseif ($user['user_type_id'] == 1) {
+                $userManager = new UserManager();
+                $userManager->LikedAsHost($user, $target);
+            }
+        } else {
+            echo "C'est un match !";
+        }
     }
-
-
 }

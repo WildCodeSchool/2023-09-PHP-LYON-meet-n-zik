@@ -32,47 +32,59 @@ class UserManager extends AbstractManager
         $statement->execute();
     }
 
-    public function likeUser($musicianId, $hostId)
+    public function LikedAsHost($userId, $targetId): array
     {
-        $stmt = $this->pdo->prepare("INSERT INTO meet (musician_user_id, host_user_id) VALUES (:musician_id, :host_id)");
-        $stmt->bindParam(':musician_id', $musicianId);
-        $stmt->bindParam(':host_id', $hostId);
-        $stmt->execute();
-    }
-
-    public function getLikedUsers($likerId)
-    {
-        $stmt = $this->pdo->prepare("SELECT * FROM meet INNER JOIN user u ON meet.musician_user_id = u.id WHERE meet.host_user_id = :liker_id");
-        $stmt->bindParam(':liker_id', $likerId);
-        $stmt->execute();
-        //$users = [];
-        //while ($row = $stmt->fetch()) {
-          //  $users[] = new User($row['ID'], $row['Username']);
-    }
-    public function amILikedAsHost($userId, $targetId) : bool
-    {
-        $stmt = $this->pdo->prepare( "SELECT * FROM meet WHERE  host_user_id = :user_id AND musician_user_id = :target_id)");
+        $stmt = $this->pdo->prepare("INSERT INTO meet (musician_user_id, host_user_id) VALUES (:targetId, :userId)");
+        $stmt->bindParam(':target_id', $targetId);
         $stmt->bindParam(':user_id', $userId);
-        $stmt->bindParam(':target_id',$targetId);
         $stmt->execute();
 
         return $stmt->fetch();
-
     }
 
-    public function amILikedAsBand ($userId,$targetId) : bool
+    public function likedAsBand($userId, $targetId): array
     {
-        $stmt = $this->pdo->prepare( "SELECT * FROM user WHERE EXISTS (SELECT * FROM meet WHERE  host_user_id = :targe_id AND musician_user_id = :user_id)");
+        $stmt = $this->pdo->prepare("INSERT INTO meet (musician_user_id, host_user_id) VALUES (:userId, :targetId)");
         $stmt->bindParam(':user_id', $userId);
-        $stmt->bindParam(':target_id',$targetId);
-        $liked = $stmt->execute();
+        $stmt->bindParam(':target_id', $targetId);
+        $stmt->execute();
 
-        return $liked;
+        return $stmt->fetch();
     }
 
-    public function getMatched($userId,$targetId)
+    public function matching($userId, $targetId): bool
     {
-        $stmt = $this->pdo->prepare("ALTER TABLE meet WHERE host_user_id = :targe_id AND musician_user_id = :user_id OR host_user_id = :user_id AND musician_user_id = :target_id ")
+        $stmt = $this->pdo->prepare("UPDATE meet SET matched = 'true' WHERE (host_user_id = :target_id AND musician_user_id = :user_id) OR (host_user_id = :user_id AND musician_user_id = :target_id)");
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->bindParam(':target_id', $targetId);
+        $stmt->execute();
+
+        return true ;
     }
 
+    public function matchedIndex($userId): array
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM meet WHERE (host_user_id = :user_id OR musician_user_id = :user_id) AND matched = 'true'");
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+    public function selectAllHost(string $orderBy = '', string $direction = 'ASC'): array
+    {
+        $query = 'SELECT * FROM ' . static::TABLE . ' WHERE user_type_id = 1';
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
+
+        return $this->pdo->query($query)->fetchAll();
+    }
+    public function selectAllBand(string $orderBy = '', string $direction = 'ASC'): array
+    {
+        $query = 'SELECT * FROM ' . static::TABLE . ' WHERE user_type_id = 2';
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
+
+        return $this->pdo->query($query)->fetchAll();
+    }
 }
