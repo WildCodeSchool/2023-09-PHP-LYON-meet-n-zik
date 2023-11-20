@@ -19,3 +19,19 @@ btn2.onclick = () => {
 };
 
 // ************************************** //
+
+document.getElementById('theme-switcher').addEventListener('click', function() {
+    var body = document.body;
+    var currentTheme = body.getAttribute('data-theme');
+    var newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    body.setAttribute('data-theme', newTheme);
+    
+    // Mettez à jour l'icône du thème en fonction du nouveau thème
+    var themeIcon = document.getElementById('theme-icon');
+    if(newTheme === 'dark') {
+        themeIcon.innerHTML = '&#9790;'; // lune
+    } else {
+        themeIcon.innerHTML = '&#9728;'; // soleil
+    }
+});
+

@@ -31,4 +31,23 @@ class UserManager extends AbstractManager
         $statement->bindValue(':user_type_id', $credentials['user_type_id'], \PDO::PARAM_STR);
         $statement->execute();
     }
+
+    public function selectAllHost(string $orderBy = '', string $direction = 'ASC'): array
+    {
+        $query = 'SELECT * FROM ' . static::TABLE . ' WHERE user_type_id = 1';
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
+
+        return $this->pdo->query($query)->fetchAll();
+    }
+    public function selectAllBand(string $orderBy = '', string $direction = 'ASC'): array
+    {
+        $query = 'SELECT * FROM ' . static::TABLE . ' WHERE user_type_id = 2';
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
+
+        return $this->pdo->query($query)->fetchAll();
+    }
 }

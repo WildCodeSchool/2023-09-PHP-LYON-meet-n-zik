@@ -77,4 +77,21 @@ class UserController extends AbstractController
         header('Location:/');
         exit();
     }
+
+    public function userIndex(): string
+    {
+        $userManager = new UserManager();
+        $user = $userManager->selectOneById($_SESSION['user_id']);
+        
+        $users = [];
+
+        if ($user['user_type_id'] == 2) {
+            $userManager = new UserManager();
+            $users = $userManager->selectAllHost();
+        } elseif ($user['user_type_id'] == 1) {
+            $userManager = new UserManager();
+            $users = $userManager->selectAllBand();
+        }
+        return $this->twig->render('User/test.html.twig', ['users' => $users]);
+    }
 }

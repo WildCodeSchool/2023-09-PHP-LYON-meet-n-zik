@@ -1,3 +1,46 @@
+:root {
+    --light-background: #f8f8f8;
+    --light-primary: #007BFF;
+    --light-secondary: #28A745;
+    
+    --dark-background: #121212;
+    --dark-primary: #37BDF8;
+    --dark-secondary: #42BE65;
+}
+
+html {
+    font-size: 16px
+}
+/* Style par défaut pour le mode clair */
+body {
+    background-color: var(--light-background);
+    color: var(--light-primary);
+    font: var(--dark-background);
+}
+
+a, .btn {
+    font-size: 1rem;
+    /* background-color: var(--light-secondary); */
+}
+
+.scroll-down a {
+    font-size: 5rem;
+    -webkit-text-stroke: 2px black;
+}
+
+/* Style pour le mode sombre */
+[data-theme="dark"] {
+    background-color: var(--dark-background);
+    color: var(--dark-primary);
+}
+
+[data-theme="dark"] a, [data-theme="dark"] .btn {
+    background-color: none;
+    color: var(--light-background);
+    /* ... autres styles ... */
+}
+
+
 /* login.html.twig CSS & signup.html.twig */
 
 .login-page, .sign-up-page h2, h3, h4{
@@ -5,11 +48,11 @@
 }
 
 .login-page h2, .sign-up-page h2{
-    margin-top: 16px;
+    margin-top: 1rem;
 }
 
 .login-page h3, .sign-up-page h3{
-    margin: 24px;
+    margin: 1.5rem;
 }
 
 .login-page form, .sign-up-page form{
@@ -18,7 +61,7 @@
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 3px;
-    padding: 16px;
+    padding: 1rem;
 }
 
 .login-page article header, .sign-up-page article header{
@@ -46,8 +89,18 @@
 }
 
 /* mise en forme video d'en-tête */
+.video-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+    height: auto; 
+}
 
 .video-header video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%; 
     height: auto; 
 }
@@ -63,18 +116,35 @@
     z-index: 1;
   }
 
+  .video-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    font-size: 4rem;
+    -webkit-text-stroke: 3px black;
+    color: var(--light-background); /* Assurez-vous que cette couleur contraste bien avec la vidéo */
+    z-index: 2; 
+}
+
   /* Bouton FIND */
 
 .search-section {
     text-align: center;
-    padding: 2.5rem 0;
+    padding: 20% 0;
 }
 
 .find-button {
-    position: absolute;
+    position: relative;
+    width: 25%;
+    height: auto;
+    font-size: 2rem;
     top: 35%; 
     left: 50%; 
-    transform: translate(-50%, -50%); 
+    /* transform: translate(-50%, -50%);  */
     z-index: 2; 
    
   }
@@ -85,6 +155,7 @@
 
 .find-button {
     padding: 1rem 2rem;
+    width: 5rem;
     background: #fff;
     color: #000;
     border: none;
@@ -94,6 +165,202 @@
     text-transform: uppercase;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
+
+  .scroll-down {
+    position: absolute;
+    bottom: 10%; /* Ajustez pour déplacer la flèche vers le haut ou le bas */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3; /* S'assurer qu'elle est au-dessus de la vidéo */
+    scroll-behavior: smooth;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Base pour la page meet */
+#meet-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    background-color: var(--dark-background); /* Assurez-vous d'avoir cette variable dans :root ou remplacer par une couleur */
+}
+
+
+/* Message de match */
+#match-message {
+    display: none; /* change this with JavaScript to 'flex' when there's a match */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#match-message p {
+    background: var(--dark-primary); /* Assurez-vous d'avoir cette variable dans :root ou remplacer par une couleur */
+    color: #fff;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+#match-message a {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--light-primary); /* Assurez-vous d'avoir cette variable dans :root ou remplacer par une couleur */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    background: #5784ba;
+    /* overflow: hidden; */
+    font-family: sans-serif;
+  }
+  
+  .tinder {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+  }
+  
+  .loaded.tinder {
+    opacity: 1;
+  }
+  
+  .tinder--status {
+    position: absolute;
+    top: 50%;
+    margin-top: -2rem;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+    pointer-events: none;
+  }
+  
+  .tinder--status i {
+    font-size: 6.25rem;
+    opacity: 0;
+    transform: scale(0.3);
+    transition: all 0.2s ease-in-out;
+    position: absolute;
+    width: 6.25rem;
+    margin-left: -3.125rem;
+  }
+  
+  .tinder_love .fa-heart {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  
+  .tinder_nope .fa-remove {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  
+  .tinder--cards {
+    flex-grow: 1;
+    padding-top: 2.5rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 1;
+  }
+  
+  .tinder--card {
+    display: inline-block;
+    width: 90vw;
+    max-width: 25rem;
+    height: 70vh;
+    background: #FFFFFF;
+    padding-bottom: 2.5rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    position: absolute;
+    will-change: transform;
+    transition: all 0.3s ease-in-out;
+    cursor: -webkit-grab;
+    cursor: -moz-grab;
+    cursor: grab;
+  }
+  
+  .moving.tinder--card {
+    transition: none;
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+    cursor: grabbing;
+  }
+  
+  .tinder--card img {
+    max-width: 100%;
+    pointer-events: none;
+  }
+  
+  .tinder--card h3 {
+    margin-top: 2rem;
+    font-size: 2rem;
+    padding: 0 16px;
+    pointer-events: none;
+  }
+  
+  .tinder--card p {
+    margin-top: 1.5rem;
+    font-size: 1.25rem;
+    padding: 0 16px;
+    pointer-events: none;
+  }
+  
+  .tinder--buttons {
+    flex: 0 0 6.25rem;
+    text-align: center;
+    padding-top: 1.25rem;
+  }
+  
+  .tinder--buttons button {
+    border-radius: 50%;
+    line-height: 3.75rem;
+    width: 3.75rem;
+    border: 0;
+    background: #FFFFFF;
+    display: inline-block;
+    margin: 0 0.5rem;
+  }
+  
+  .tinder--buttons button:focus {
+    outline: 0;
+  }
+  
+  .tinder--buttons i {
+    font-size: 2rem;
+    vertical-align: middle;
+  }
+  
+  .fa-heart {
+    color: #FFACE4;
+  }
+  
+  .fa-remove {
+    color: #CDD6DD;
+  }
+  
+
 
   /* MEDIA QUERIES */
 
@@ -105,6 +372,10 @@
     .choose-form button{
         width: 100%;
     }
+
+    .video-title {
+        font-size: 2rem;
+    }
 }
 
 @media (min-width: 576px) {
@@ -115,7 +386,7 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
-        padding: 24px;
+        padding: 1.5rem;
     }
     .choose-form{
         justify-content: space-evenly;
@@ -124,6 +395,10 @@
     .choose-form button{
         width: 30%;
     }
+    video-title {
+        font-size: 2.5rem;
+    }
+
 }
 
 @media (min-width: 768px) {
@@ -134,7 +409,7 @@
 
     .sign-up-page form, .login-page form {
         width: 57%;
-        padding: 40px;
+        padding: 2.5rem;
     }
     .choose-form button{
         width: 18%;
@@ -144,10 +419,14 @@
 @media (min-width: 992px) {
     .sign-up-page form, .login-page form {
         width: 57%;
-        padding: 40px;
+        padding: 2.5rem;
     }
     .choose-form button{
         width: 18%;
+    }
+
+    video-title {
+        font-size: 4rem;
     }
 }
 
@@ -155,4 +434,9 @@
     .video-header video {
         max-height: 100vh;
     }
+
+    video-title {
+        font-size: 5rem;
+    }
+
 }
