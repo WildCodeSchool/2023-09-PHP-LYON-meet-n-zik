@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\MatchManager;
+use App\Model\UserManager;
 
 class MatchController extends AbstractController
 {
@@ -42,12 +43,11 @@ class MatchController extends AbstractController
     {
     }
     
-    public function addMatch(int $targetId): void 
+    public function addMatch(int $targetId) 
     {
-        $userId =($_SESSION['user_id']);
-        echo $userId;
-        die();
+        $userManager = new UserManager();
+        $userManager->likedAsHost($_SESSION['user_id'], $targetId);
+        // $userManager->selectAllBand();
+        echo $_SESSION['user_id'];
     }
-
-
 }

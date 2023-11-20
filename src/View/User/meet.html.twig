@@ -121,7 +121,7 @@ function createButtonListener(love) {
       let targetId = card.getAttribute('value');
       fetch('/matches?targetId=' + targetId)
         .then(response => response.json())
-        .then(matches => console.log(matches))
+        .then(data => console.log(data))
         .catch((err) => console.error(err));
     } else {
       card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';

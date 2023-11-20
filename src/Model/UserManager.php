@@ -50,4 +50,49 @@ class UserManager extends AbstractManager
 
         return $this->pdo->query($query)->fetchAll();
     }
+
+    public function likedAsHost(int $userId, int $targetId): int
+{
+    $statement = $this->pdo->prepare("INSERT INTO meet (musician_user_id, host_user_id) VALUES (:targetId, :userId)");
+    $statement->bindValue('targetId', $targetId, PDO::PARAM_INT); 
+    $statement->bindValue('userId', $userId, PDO::PARAM_INT);
+    $statement->execute();
+
+    return (int)$this->pdo->lastInsertId();
+}
+
+    public function likedAsBand ($userId,$targetId) : array
+    {
+        $stmt = $this->pdo->prepare( "SELECT * FROM meet WHERE host_user_id = :target_id AND musician_user_id = :user_id");
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->bindParam(':target_id',$targetId);
+        $stmt->execute();
+
+        return $stmt->fetch();
+    }
+
+    public function matchingAsHost($userId, $targetId) : bool
+    {
+        $stmt = $this->pdo->prepare("UPDATE meet SET matched = 'true' WHERE host_user_id = :user_id AND musician_user_id = :target_id");
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->bindParam(':target_id',$targetId);
+        return $stmt->execute();
+    }
+
+    public function matchedIndex($userId) : array
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM meet WHERE (host_user_id = :user_id OR musician_user_id = :user_id) AND matched = 'true'");
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
+    public function findMatchAsHost($userId, $targetId) : array
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM meet WHERE host_user_id = :user_id AND musician_user_id = :target_id");
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->bindParam(':target_id', $targetId);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
 }
