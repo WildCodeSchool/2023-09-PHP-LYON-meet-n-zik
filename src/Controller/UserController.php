@@ -130,4 +130,19 @@ class UserController extends AbstractController
         }
         return $this->twig->render('User/edit-user-profil.html.twig', ['user' => $credentials]);
     }
+
+    public function showMatches()
+    {
+        if (isset($_SESSION['user_id'])) {
+            $userManager = new UserManager();
+            $user = $userManager->selectOneById($_SESSION['user_id']);
+
+            if ($user) {
+                $userManager = new UserManager();
+                $matches = $userManager->matchedIndex($user['id']);
+
+                return $this->twig->render('User/user-matches.html.twig', ['matches' => $matches]);
+            }
+        }
+    }
 }

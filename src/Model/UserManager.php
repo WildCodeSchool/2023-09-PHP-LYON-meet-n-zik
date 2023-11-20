@@ -9,6 +9,7 @@ class UserManager extends AbstractManager
 {
     public const TABLE = 'user';
 
+
     public function selectOneByEmail(string $email): array|false
     {
         // prepared request
@@ -75,5 +76,17 @@ class UserManager extends AbstractManager
         $statement->bindValue(':video', $user['video'], PDO::PARAM_STR);
 
         return $statement->execute();
+    }
+
+    public function matchedIndex($userId): array
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM meet 
+        WHERE (host_user_id = :user_id OR musician_user_id = :user_id) AND matched = 'true'");
+        $statement->bindParam(':user_id', $userId);
+        $statement->execute();
+
+        $matches = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $matches;
     }
 }
