@@ -34,11 +34,20 @@ class MatchController extends AbstractController
     }
 
 
-    private function denyAccessUnlessLoggedIn(): void
+   public function denyAccessUnlessLoggedIn(): void
     {
     }
 
-    private function isUserPartOfMatch(int $matchId, int $userId): bool
+   public function isUserPartOfMatch(int $matchId, int $userId): bool
     {
     }
+    
+    public function addMatch(int $targetId): void 
+    {
+        $userId =($_SESSION['user_id']);
+        echo $userId;
+        die();
+    }
+
+
 }

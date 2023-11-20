@@ -21,7 +21,7 @@ return [
     'meet' => ['UserController', 'userIndex',],
     'items/delete' => ['ItemController', 'delete',],
     'interact' => ['InteractionController', 'interact',],
-    'matches' => ['MatchController', 'index',],
+    'matches' => ['MatchController', 'addMatch', ['targetId']],
     'matches/show' => ['MatchController', 'show', ['id']],
     'matches/like' => ['InteractionController', 'like', ['id']],
     'matches/dislike' => ['InteractionController', 'dislike', ['id']],
