@@ -91,6 +91,5 @@ class UserController extends AbstractController
             $users = $userManager->selectAllBand();
         }
         return $this->twig->render('User/meet.html.twig', ['users' => $users]);
-        //return $this->twig->render('HTTP/1.1 401 Unauthorized');
     }
 }
