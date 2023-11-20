@@ -92,6 +92,6 @@ class UserController extends AbstractController
             $userManager = new UserManager();
             $users = $userManager->selectAllBand();
         }
-        return $this->twig->render('User/test.html.twig', ['users' => $users]);
+        return $this->twig->render('User/meet.html.twig', ['users' => $users]);
     }
 }
