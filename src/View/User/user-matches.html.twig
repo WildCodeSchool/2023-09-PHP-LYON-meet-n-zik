@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+	<div class="container matches-page">
+		<h2>Mes favoris</h2>
+		<h3>Ils m'ont aimés</h3>
+		{% for match in matchess %}
+			<article>
+				<header>{{ match.user_name }}</header>
+				{% if match.video %}
+					{% set videoId = match.video|split('/')|last|split('?')|first %}
+					{% set embedLink = 'https://www.youtube.com/embed/' ~ videoId %}
+
+					<iframe src="{{ embedLink }}"></iframe>
+				{% else %}
+					<p>Aucune vidéo disponible pour cet utilisateur.</p>
+				{% endif %}
+				<footer>
+					<p>{{ match.email }}</p>
+					<p>{{ match.description }}</p>
+				</footer>
+			</article>
+		{% endfor %}
+
+	</div>
+{% endblock %}

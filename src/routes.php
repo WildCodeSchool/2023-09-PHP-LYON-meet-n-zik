@@ -21,5 +21,5 @@ return [
     'meet' => ['UserController', 'userIndex'],
     'account' => ['UserController', 'showUser',['id']],
     'account/edit' => ['UserController', 'editProfil',['id']],
-
+    'my-matches' => ['UserController', 'showMatches', ['id']],
 ];
