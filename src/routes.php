@@ -14,4 +14,6 @@ return [
     'host/show' => ['HostController', 'index',['id']],
     'band/show' => ['BandController', 'index',['id']],
     'account' => ['AccountController', 'account',],
+    'meet' => ['UserController', 'userIndex',],
+
 ];

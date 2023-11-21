@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Rencontre{% endblock %}
+{% block content %}
+    {% for user in users %}
+        <article>
+            <header>{{ user.user_name }}</header>
+            <img src="{{ user.picture }}" alt="Photo de {{ user.user_name }}">
+            <footer>{{ user.description }}</footer>
+        </article>
+        <form action="" method="post">
+            <input type="hidden" name="targetId" value={{user.id}}>
+            <input type="submit" value="J'aime">
+        </form>
+    {% endfor %}
+{% endblock %}

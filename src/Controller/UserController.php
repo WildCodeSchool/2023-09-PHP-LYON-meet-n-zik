@@ -84,34 +84,35 @@ class UserController extends AbstractController
         $user = $userManager->selectOneById($_SESSION['user_id']);
         $users = [];
 
-        if ($user['user_type_id'] == 2) {
-            $userManager = new UserManager();
-            $users = $userManager->selectAllHost();
-        } elseif ($user['user_type_id'] == 1) {
-            $userManager = new UserManager();
-            $users = $userManager->selectAllBand();
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = $_POST;
+            $userManager->likeAUser($user['id'], $data['targetId']);
         }
+
+        if ($user['user_type_id'] == 2) {
+            $users = $userManager->selectAllHostNoLike($user['id']);
+        } elseif ($user['user_type_id'] == 1) {
+            $users = $userManager->selectAllBandNoLike($user['id']);
+        }
+
         return $this->twig->render('User/meet.html.twig', ['users' => $users]);
     }
-    public function likeUser($user, $target)
+    public function likeUser($id)
     {
-
         $userManager = new UserManager();
         $user = $userManager->selectOneById($_SESSION['user_id']);
-
-        $userManager = new UserManager();
-        $matching = $userManager->matching($user, $target);
-
-        if (!$matching) {
-            if ($user['user_type_id'] == 2) {
-                $userManager = new UserManager();
-                $userManager->likedAsBand($user, $target);
-            } elseif ($user['user_type_id'] == 1) {
-                $userManager = new UserManager();
-                $userManager->LikedAsHost($user, $target);
-            }
-        } else {
-            echo "C'est un match !";
+                $userManager->likeAUser($user['user_id'], $id);
+    }
+    public function showMatches()
+    {
+        $matches = [];
+        if (isset($_SESSION['user_id'])) {
+            $userManager = new UserManager();
+            $user = $userManager->selectOneById($_SESSION['user_id']);
+            $matches = $userManager->matchedIndex($user['user_id']);
+            header('Location: /my-matches?id=' . $user);
         }
+
+        return $this->twig->render('User/user-matches.html.twig', ['matches' => $matches]);
     }
 }
