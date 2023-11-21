@@ -1,0 +1,41 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<div class="container profil-page">
+		<h3>Votre profil</h3>
+		<article>
+			<header>
+				<p>Nom</p>
+			</header>
+			{{ user.user_name }}
+		</article>
+		<article>
+			<header>
+				<p>Email</p>
+			</header>
+			{{ user.email }}
+		</article>
+		<article>
+			<header>
+				<p>Description</p>
+			</header>
+			{{ user.description }}
+		</article>
+		<article class="video">
+			<header>
+				<p>Vidéo</p>
+			</header>
+			{% if user.video %}
+				{% set videoId = user.video|split('/')|last|split('?')|first %}
+				{% set embedLink = 'https://www.youtube.com/embed/' ~ videoId %}
+
+				<iframe src="{{ embedLink }}"></iframe>
+			{% else %}
+				<p>Aucune vidéo disponible pour cet utilisateur.</p>
+			{% endif %}
+		</article>
+		<div class="button-access">
+			<a href="/account/edit/?id={{ user.id }}" role="button">Editer votre profil</a>
+		</div>
+	</div>
+{% endblock %}

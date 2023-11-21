@@ -1,7 +1,7 @@
 <nav class="container-fluid">
 	<ul>
 		<li>
-			<strong>Meet and Zik</strong>
+			<strong><a href="/">Meet'n Zik</a></strong>
 		</li>
 	</ul>
     {% if user %}
@@ -28,6 +28,12 @@
 						<a href="/">Accueil</a>
 					</li>
 					{% if user %}
+					<li>
+						<a href="/account">Mon profil</a>
+					</li>
+					<li>
+						<a href="/account/edit/?id={{ user.id }}">Edition profil</a>
+					</li>
 					<li>
 						<a href="/meet">Meet</a>
 					</li>

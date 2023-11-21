@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
     --light-background: #f8f8f8;
     --light-primary: #007BFF;
@@ -40,6 +41,13 @@ a, .btn {
     /* ... autres styles ... */
 }
 
+=======
+/******* Navbar ********/
+nav ul:nth-of-type(2){
+    text-align: center;
+}
+/***********************/
+>>>>>>> 4ee2d11213ad831319522bd2c482b070096b74a3
 
 /* login.html.twig CSS & signup.html.twig */
 
@@ -69,7 +77,12 @@ a, .btn {
     text-align: center;
 }
 
-.login-page ul li, .sign-up-page ul li{
+.edit-error{
+    background-color: rgb(85, 21, 21);
+    text-align: center;
+}
+
+.login-page ul li, .sign-up-page ul li, .edit-page ul li{
     list-style: none;
     text-align: center;
 }
@@ -166,6 +179,7 @@ a, .btn {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
+<<<<<<< HEAD
   .scroll-down {
     position: absolute;
     bottom: 10%; /* Ajustez pour déplacer la flèche vers le haut ou le bas */
@@ -362,6 +376,44 @@ a, .btn {
   
 
 
+=======
+  /* user-profil.html.twig & edit-user-profil*/
+.profil-page h3, .edit-page h3{
+    margin: 32px;
+}
+
+article {
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+}
+
+iframe{
+    width: 100%;
+    height: 315px;
+    margin: 0 auto;
+    border-radius: 3px;;
+}
+
+.button-access{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
+
+  /*************************/
+
+/* edit-user-profil.html.twig */
+
+.edit-page button{
+    width: 50%;
+    margin: 40px auto;
+}
+
+/*************************/
+
+>>>>>>> 4ee2d11213ad831319522bd2c482b070096b74a3
   /* MEDIA QUERIES */
 
   @media (max-width: 320px) {
@@ -395,10 +447,21 @@ a, .btn {
     .choose-form button{
         width: 30%;
     }
+<<<<<<< HEAD
     video-title {
         font-size: 2.5rem;
     }
 
+=======
+
+    .edit-page button{
+        width: 35%;    
+    }
+
+    .profil-page button{
+        width: 50%;
+    }
+>>>>>>> 4ee2d11213ad831319522bd2c482b070096b74a3
 }
 
 @media (min-width: 768px) {
@@ -414,6 +477,25 @@ a, .btn {
     .choose-form button{
         width: 18%;
     }
+    .edit-page button{
+        width: 30%;    
+    }
+    .profil-page button{
+        width: 40%;
+    }
+    article {
+        text-align: initial;
+    }
+
+    .profil-page form, .edit-page form{
+        margin: 0 auto;
+        width: 73%;
+    }
+
+    .profil-page article {
+        margin: 32px auto;
+        width: 73%;
+    }
 }
 
 @media (min-width: 992px) {
@@ -424,9 +506,21 @@ a, .btn {
     .choose-form button{
         width: 18%;
     }
+<<<<<<< HEAD
 
     video-title {
         font-size: 4rem;
+=======
+    .edit-page button{
+        width: 35%;    
+    }
+    .profil-page button{
+        width: 30%;
+    }
+    .profil-page form, .edit-page form{
+        margin: 0 auto;
+        width: 70%;
+>>>>>>> 4ee2d11213ad831319522bd2c482b070096b74a3
     }
 }
 

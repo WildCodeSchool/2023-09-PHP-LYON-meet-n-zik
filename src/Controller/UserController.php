@@ -82,7 +82,10 @@ class UserController extends AbstractController
     {
         $userManager = new UserManager();
         $user = $userManager->selectOneById($_SESSION['user_id']);
+<<<<<<< HEAD
         
+=======
+>>>>>>> 4ee2d11213ad831319522bd2c482b070096b74a3
         $users = [];
 
         if ($user['user_type_id'] == 2) {
@@ -94,4 +97,44 @@ class UserController extends AbstractController
         }
         return $this->twig->render('User/meet.html.twig', ['users' => $users]);
     }
+<<<<<<< HEAD
+=======
+    public function showUser(): string
+    {
+        if (isset($_SESSION['user_id'])) {
+            $userID = $_SESSION['user_id'];
+
+            $userManager = new UserManager();
+            $user = $userManager->selectOneById($userID);
+
+            return $this->twig->render('User/user-profil.html.twig', ['users' => $user]);
+        } else {
+            header('Location: /');
+            die();
+        }
+    }
+
+    public function editProfil(int $id): ?string
+    {
+        $userManager = new UserManager();
+        $credentials = $userManager->selectOneById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $dataTrimed = array_map('trim', $_POST);
+            $credentials = array_map('htmlentities', $dataTrimed);
+
+            $formVerification = new FormVerificationService();
+            $formVerification->editProfilVerfication($credentials);
+            $errors = $formVerification->errors;
+            if (empty($errors)) {
+                $userManager->update($credentials);
+                header('Location: /account?id=' . $id);
+                return null;
+            } else {
+                return $this->twig->render('User/edit-user-profil.html.twig', ['errors' => $errors]);
+            }
+        }
+        return $this->twig->render('User/edit-user-profil.html.twig', ['user' => $credentials]);
+    }
+>>>>>>> 4ee2d11213ad831319522bd2c482b070096b74a3
 }
