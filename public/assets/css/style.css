@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 :root {
     --light-background: #f8f8f8;
     --light-primary: #007BFF;
     --light-secondary: #28A745;
-    
+
     --dark-background: #121212;
     --dark-primary: #37BDF8;
     --dark-secondary: #42BE65;
@@ -12,6 +11,7 @@
 html {
     font-size: 16px
 }
+
 /* Style par défaut pour le mode clair */
 body {
     background-color: var(--light-background);
@@ -19,7 +19,8 @@ body {
     font: var(--dark-background);
 }
 
-a, .btn {
+a,
+.btn {
     font-size: 1rem;
     /* background-color: var(--light-secondary); */
 }
@@ -35,35 +36,41 @@ a, .btn {
     color: var(--dark-primary);
 }
 
-[data-theme="dark"] a, [data-theme="dark"] .btn {
+[data-theme="dark"] a,
+[data-theme="dark"] .btn {
     background-color: none;
     color: var(--light-background);
     /* ... autres styles ... */
 }
 
-=======
 /******* Navbar ********/
-nav ul:nth-of-type(2){
+nav ul:nth-of-type(2) {
     text-align: center;
 }
+
 /***********************/
->>>>>>> 4ee2d11213ad831319522bd2c482b070096b74a3
 
 /* login.html.twig CSS & signup.html.twig */
 
-.login-page, .sign-up-page h2, h3, h4{
+.login-page,
+.sign-up-page h2,
+h3,
+h4 {
     text-align: center;
 }
 
-.login-page h2, .sign-up-page h2{
+.login-page h2,
+.sign-up-page h2 {
     margin-top: 1rem;
 }
 
-.login-page h3, .sign-up-page h3{
+.login-page h3,
+.sign-up-page h3 {
     margin: 1.5rem;
 }
 
-.login-page form, .sign-up-page form{
+.login-page form,
+.sign-up-page form {
     background-image: url(../images/scene-on-fire.png);
     background-size: cover;
     background-repeat: no-repeat;
@@ -72,28 +79,31 @@ nav ul:nth-of-type(2){
     padding: 1rem;
 }
 
-.login-page article header, .sign-up-page article header{
+.login-page article header,
+.sign-up-page article header {
     background-color: rgb(85, 21, 21);
     text-align: center;
 }
 
-.edit-error{
+.edit-error {
     background-color: rgb(85, 21, 21);
     text-align: center;
 }
 
-.login-page ul li, .sign-up-page ul li, .edit-page ul li{
+.login-page ul li,
+.sign-up-page ul li,
+.edit-page ul li {
     list-style: none;
     text-align: center;
 }
 
-.choose-form{
+.choose-form {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     margin: 0;
 }
 
-.choose-form button{
+.choose-form button {
     width: 40%;
 }
 
@@ -106,16 +116,16 @@ nav ul:nth-of-type(2){
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%; 
-    height: auto; 
+    width: 100%;
+    height: auto;
 }
 
 .video-header video {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%; 
-    height: auto; 
+    width: 100%;
+    height: auto;
 }
 
 .video-header::after {
@@ -127,9 +137,9 @@ nav ul:nth-of-type(2){
     left: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 1;
-  }
+}
 
-  .video-title {
+.video-title {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -139,53 +149,74 @@ nav ul:nth-of-type(2){
     transform: translate(-50%, -50%); */
     font-size: 4rem;
     -webkit-text-stroke: 3px black;
-    color: var(--light-background); /* Assurez-vous que cette couleur contraste bien avec la vidéo */
-    z-index: 2; 
+    color: var(--light-background);
+    /* Assurez-vous que cette couleur contraste bien avec la vidéo */
+    z-index: 2;
 }
 
-  /* Bouton FIND */
+/* Bouton FIND */
 
 .search-section {
     text-align: center;
     padding: 20% 0;
+    
 }
 
-.find-button {
-    position: relative;
-    width: 25%;
-    height: auto;
-    font-size: 2rem;
-    top: 35%; 
-    left: 50%; 
-    /* transform: translate(-50%, -50%);  */
-    z-index: 2; 
-   
-  }
+.find-button-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-around;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: large;
+}
+
 
 .find-button:hover {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-around;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: large;
+    margin-left: 5%;
+    margin-right: 5%;
     background-color: #555;
+    
 }
 
 .find-button {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-around;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: large;
+    margin-left: 5%;
+    margin-right: 5%;
     padding: 1rem 2rem;
     width: 5rem;
     background: #fff;
     color: #000;
     border: none;
     border-radius: 0.5rem;
-    font-size: 1rem; 
+    font-size: 1rem;
     cursor: pointer;
     text-transform: uppercase;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+}
 
-<<<<<<< HEAD
-  .scroll-down {
+.scroll-down {
     position: absolute;
-    bottom: 10%; /* Ajustez pour déplacer la flèche vers le haut ou le bas */
+    bottom: 10%;
+    /* Ajustez pour déplacer la flèche vers le haut ou le bas */
     left: 50%;
     transform: translateX(-50%);
-    z-index: 3; /* S'assurer qu'elle est au-dessus de la vidéo */
+    z-index: 3;
+    /* S'assurer qu'elle est au-dessus de la vidéo */
     scroll-behavior: smooth;
 }
 
@@ -201,20 +232,23 @@ nav ul:nth-of-type(2){
     justify-content: center;
     min-height: 100vh;
     padding: 2rem;
-    background-color: var(--dark-background); /* Assurez-vous d'avoir cette variable dans :root ou remplacer par une couleur */
+    background-color: var(--dark-background);
+    /* Assurez-vous d'avoir cette variable dans :root ou remplacer par une couleur */
 }
 
 
 /* Message de match */
 #match-message {
-    display: none; /* change this with JavaScript to 'flex' when there's a match */
+    display: none;
+    /* change this with JavaScript to 'flex' when there's a match */
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
 #match-message p {
-    background: var(--dark-primary); /* Assurez-vous d'avoir cette variable dans :root ou remplacer par une couleur */
+    background: var(--dark-primary);
+    /* Assurez-vous d'avoir cette variable dans :root ou remplacer par une couleur */
     color: #fff;
     padding: 1rem;
     border-radius: 5px;
@@ -223,25 +257,28 @@ nav ul:nth-of-type(2){
 #match-message a {
     margin-top: 1rem;
     padding: 0.5rem 1rem;
-    background: var(--light-primary); /* Assurez-vous d'avoir cette variable dans :root ou remplacer par une couleur */
+    background: var(--light-primary);
+    /* Assurez-vous d'avoir cette variable dans :root ou remplacer par une couleur */
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-  }
-  
-  body {
+}
+
+body {
     background: #5784ba;
     /* overflow: hidden; */
     font-family: sans-serif;
-  }
-  
-  .tinder {
+}
+
+/* .tinder {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -372,13 +409,47 @@ nav ul:nth-of-type(2){
   
   .fa-remove {
     color: #CDD6DD;
-  }
-  
+  } */
 
+article {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-around;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: large;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: #141E26;
+    
+}
 
-=======
-  /* user-profil.html.twig & edit-user-profil*/
-.profil-page h3, .edit-page h3{
+header {
+    background-color: #18232C;
+}
+
+footer {
+    background: #18232C;
+}
+
+form.like {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-around;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: large;
+    margin-left: 40%;
+    margin-right: 40%;
+    opacity: 0.7;
+    transform: scale(1);
+}
+
+/* user-profil.html.twig & edit-user-profil*/
+.profil-page h3,
+.edit-page h3 {
     margin: 32px;
 }
 
@@ -388,50 +459,77 @@ article {
     text-align: center;
 }
 
-iframe{
+iframe {
     width: 100%;
     height: 315px;
     margin: 0 auto;
-    border-radius: 3px;;
+    border-radius: 3px;
+    ;
 }
 
-.button-access{
+.button-access {
     text-align: center;
     margin-bottom: 40px;
 }
 
 
 
-  /*************************/
+/*************************/
 
 /* edit-user-profil.html.twig */
 
-.edit-page button{
+.edit-page button {
     width: 50%;
     margin: 40px auto;
 }
 
 /*************************/
 
->>>>>>> 4ee2d11213ad831319522bd2c482b070096b74a3
-  /* MEDIA QUERIES */
+/* MEDIA QUERIES */
 
-  @media (max-width: 320px) {
-    .choose-form{
+@media (max-width: 320px) {
+    .choose-form {
         flex-direction: column;
         align-items: center;
     }
-    .choose-form button{
+
+    .choose-form button {
         width: 100%;
     }
 
     .video-title {
         font-size: 2rem;
     }
+
+    article {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+        justify-content: space-around;
+        flex-direction: column;
+        font-weight: bold;
+        font-size: large;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+    
+    form.like {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+        justify-content: space-around;
+        flex-direction: column;
+        font-weight: bold;
+        font-size: large;
+        margin-left: 33%;
+        margin-right: 33%;
+    }
 }
 
 @media (min-width: 576px) {
-    .sign-up-page form, .login-page form {
+
+    .sign-up-page form,
+    .login-page form {
         background-image: url(../images/scene-paysage.png);
         background-size: auto 100%;
         width: 73%;
@@ -440,28 +538,27 @@ iframe{
         margin-right: auto;
         padding: 1.5rem;
     }
-    .choose-form{
+
+    .choose-form {
         justify-content: space-evenly;
     }
 
-    .choose-form button{
+    .choose-form button {
         width: 30%;
     }
-<<<<<<< HEAD
+
     video-title {
         font-size: 2.5rem;
     }
 
-=======
 
-    .edit-page button{
-        width: 35%;    
+    .edit-page button {
+        width: 35%;
     }
 
-    .profil-page button{
+    .profil-page button {
         width: 50%;
     }
->>>>>>> 4ee2d11213ad831319522bd2c482b070096b74a3
 }
 
 @media (min-width: 768px) {
@@ -470,24 +567,30 @@ iframe{
         max-height: 50vh;
     }
 
-    .sign-up-page form, .login-page form {
+    .sign-up-page form,
+    .login-page form {
         width: 57%;
         padding: 2.5rem;
     }
-    .choose-form button{
+
+    .choose-form button {
         width: 18%;
     }
-    .edit-page button{
-        width: 30%;    
+
+    .edit-page button {
+        width: 30%;
     }
-    .profil-page button{
+
+    .profil-page button {
         width: 40%;
     }
+
     article {
         text-align: initial;
     }
 
-    .profil-page form, .edit-page form{
+    .profil-page form,
+    .edit-page form {
         margin: 0 auto;
         width: 73%;
     }
@@ -496,33 +599,92 @@ iframe{
         margin: 32px auto;
         width: 73%;
     }
+
+    article {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+        justify-content: space-around;
+        flex-direction: column;
+        font-weight: bold;
+        font-size: large;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    article>header {
+        text-align: center;
+    }
+    
+    form.like {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+        justify-content: space-around;
+        flex-direction: column;
+        font-weight: bold;
+        font-size: large;
+        margin-left: 33%;
+        margin-right: 33%;
+    }
 }
 
 @media (min-width: 992px) {
-    .sign-up-page form, .login-page form {
+
+    .sign-up-page form,
+    .login-page form {
         width: 57%;
         padding: 2.5rem;
     }
-    .choose-form button{
+
+    .choose-form button {
         width: 18%;
     }
-<<<<<<< HEAD
 
     video-title {
         font-size: 4rem;
-=======
-    .edit-page button{
-        width: 35%;    
     }
-    .profil-page button{
+
+    .edit-page button {
+        width: 35%;
+    }
+
+    .profil-page button {
         width: 30%;
     }
-    .profil-page form, .edit-page form{
+
+    .profil-page form,
+    .edit-page form {
         margin: 0 auto;
         width: 70%;
->>>>>>> 4ee2d11213ad831319522bd2c482b070096b74a3
+    }
+
+    article {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+        justify-content: space-around;
+        flex-direction: column;
+        font-weight: bold;
+        font-size: large;
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+    
+    form.like {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+        justify-content: space-around;
+        flex-direction: column;
+        font-weight: bold;
+        font-size: large;
+        margin-left: 40%;
+        margin-right: 40%;
     }
 }
+
+
 
 @media (min-width: 1024px) {
     .video-header video {

@@ -3,7 +3,6 @@
 {% block content %}
     <!-- La flèche pour le scroll smooth  -->
     <div class="scroll-down">
-        <a href="#meet-section">&#x2193;</a>
     </div>
 </section>
 <!-- Section vidéo d'en-tête -->
@@ -41,52 +40,5 @@
     <p> {{ user.user_name }}</p>
 </article>
 {% endfor %}
-
-
-
-
-<!-- Section des groupes à découvrir -->
-{% if user.user_type_id == 1 %}
-<section class="bands-section">
-    <h2>Les groupes à découvrir</h2>
-            <div class="band-item">
-            <img src="{{ user.user_type_id == 2.image_url }}" alt="{{ user.user_type_id == 2.name }}">
-            <h3>{{ user.user_type_id == 2.name }}</h3>
-            <p>Genre : {{ user.user_type_id == 2.style_name }}</p>
-            <p>Statut : {{ user.user_type_id == 2.status_name }}</p>
-            <a href="/band/show/{{ user.user_type_id == 2.id }}">Voir le groupe</a>
-        </div>
-</section>
-
-{% elseif user.user_type_id == 1 %}
-
-{% else %}
-<section class="bands-section">
-    <h2>Les groupes à découvrir</h2>
-    <!-- Ici, insérez vos éléments de groupe dynamiquement -->
-</section>
-
-{% endif %}
-
-{% if user.user_type_id == 2 %}
-<!-- Section des salles à découvrir -->
-<section class="places-section">
-    <h2>Les salles à découvrir</h2>
-    <div class="place-section">
-      <img src="{{ user_type_id == 1.picture }}" alt="Photo de {{ user_type_id == 1.user_name }}">
-      <h3>{{ user_type_id == 1.user_name }}</h3>
-      <p>{{ user_type_id == 1.description }}</p>
-    </div>
-
-{% elseif user.user_type_id == 1 %}
-
-{% else %}
-<section class="places-section">
-    <h2>Les salles à découvrir</h2>
-    <!-- Ici, insérez vos éléments de salle dynamiquement -->
-</section>
-
-
-{% endif %}
 
 {% endblock %}

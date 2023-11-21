@@ -13,10 +13,7 @@ return [
     'signup' => ['UserController', 'registration',],
     'host/show' => ['HostController', 'index',['id']],
     'band/show' => ['BandController', 'index',['id']],
-<<<<<<< HEAD
     'account' => ['AccountController', 'account',],
-=======
->>>>>>> 4ee2d11213ad831319522bd2c482b070096b74a3
     'items' => ['ItemController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
     'items/show' => ['ItemController', 'show', ['id']],

@@ -82,10 +82,6 @@ class UserController extends AbstractController
     {
         $userManager = new UserManager();
         $user = $userManager->selectOneById($_SESSION['user_id']);
-<<<<<<< HEAD
-        
-=======
->>>>>>> 4ee2d11213ad831319522bd2c482b070096b74a3
         $users = [];
 
         if ($user['user_type_id'] == 2) {
@@ -97,8 +93,6 @@ class UserController extends AbstractController
         }
         return $this->twig->render('User/meet.html.twig', ['users' => $users]);
     }
-<<<<<<< HEAD
-=======
     public function showUser(): string
     {
         if (isset($_SESSION['user_id'])) {
@@ -136,5 +130,4 @@ class UserController extends AbstractController
         }
         return $this->twig->render('User/edit-user-profil.html.twig', ['user' => $credentials]);
     }
->>>>>>> 4ee2d11213ad831319522bd2c482b070096b74a3
 }
