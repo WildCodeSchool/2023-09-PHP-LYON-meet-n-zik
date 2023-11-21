@@ -15,7 +15,6 @@ class UserController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $trimUser = array_map('trim', $_POST);
             $user = array_map('htmlentities', $trimUser);
-
             $formVerification = new formVerificationService();
             $formVerification->formVerification($user);
             $errors = $formVerification->errors;
@@ -84,6 +83,7 @@ class UserController extends AbstractController
         $user = $userManager->selectOneById($_SESSION['user_id']);
         $users = [];
 
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = $_POST;
             $userManager->likeAUser($user['id'], $data['targetId']);
@@ -114,5 +114,74 @@ class UserController extends AbstractController
         }
 
         return $this->twig->render('User/user-matches.html.twig', ['matches' => $matches]);
+
+        if ($user['user_type_id'] == 2) {
+            $userManager = new UserManager();
+            $users = $userManager->selectAllHost();
+        } elseif ($user['user_type_id'] == 1) {
+            $userManager = new UserManager();
+            $users = $userManager->selectAllBand();
+        }
+        return $this->twig->render('User/meet.html.twig', ['users' => $users]);
+    }
+    public function showUser(): string
+    {
+        if (isset($_SESSION['user_id'])) {
+            $userID = $_SESSION['user_id'];
+
+            $userManager = new UserManager();
+            $user = $userManager->selectOneById($userID);
+
+            return $this->twig->render('User/user-profil.html.twig', ['users' => $user]);
+        } else {
+            header('Location: /');
+            die();
+        }
+    }
+
+    public function editProfil(int $id): ?string
+    {
+        $userManager = new UserManager();
+        $credentials = $userManager->selectOneById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $dataTrimed = array_map('trim', $_POST);
+            $credentials = array_map('htmlentities', $dataTrimed);
+
+            $formVerification = new FormVerificationService();
+            $formVerification->editProfilVerfication($credentials);
+            $errors = $formVerification->errors;
+            if (empty($errors)) {
+                $userManager->update($credentials);
+                header('Location: /account?id=' . $id);
+                return null;
+            } else {
+                return $this->twig->render('User/edit-user-profil.html.twig', ['errors' => $errors]);
+            }
+        }
+        return $this->twig->render('User/edit-user-profil.html.twig', ['user' => $credentials]);
+    }
+
+    public function showMatches()
+    {
+        if (isset($_SESSION['user_id'])) {
+            $userManager = new UserManager();
+            $user = $userManager->selectOneById($_SESSION['user_id']);
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $data = $_POST;
+
+                $userManager->likeBack($user['id'], $data['targetId']);
+            }
+
+            $userManager = new UserManager();
+            $matches = $userManager->matchedIndex($user['id']);
+
+
+            return $this->twig->render('User/user-matches.html.twig', ['matchess' => $matches]);
+        } else {
+            header('Location: /login');
+            die();
+        }
     }
 }

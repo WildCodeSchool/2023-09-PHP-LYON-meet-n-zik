@@ -1,7 +1,9 @@
 <nav class="container-fluid">
 	<ul>
 		<li>
-			<strong>Meet and Zik</strong>
+			<strong>
+				<a href="/">Meet'n Zik</a>
+			</strong>
 		</li>
 	</ul>
     {% if user %}
@@ -11,6 +13,14 @@
 		</li>
 	</ul>
     {% endif %}
+	    <!-- Bouton de changement de thème -->
+	<ul>
+	<li>
+	<button id="theme-toggle">
+        <span id="theme-icon" class="theme-icon">☼</span> <!-- Soleil -->
+    </button>
+	</li>
+	</ul>
 	<ul>
 		<li>
 			<details role="list" dir="rtl">
@@ -20,19 +30,49 @@
 						<a href="/">Accueil</a>
 					</li>
 					{% if user %}
-					<li>
-						<a href="/logout">Se deconnecter</a>
+						<li>
+							<a href="/account">Mon profil</a>
+						</li>
+						<li>
+							<a href="/account/edit/?id={{ user.id }}">Edition profil</a>
+						</li>
+						<li>
+							<a href="/my-matches">Mes favoris</a>
+						</li>
+						<li>
+						<a href="/meet">Meet</a>
 					</li>
-                    {% else %}
-                    <li>
-						<a href="/login">Connexion</a>
-					</li>
-					<li>
-						<a href="/signup">Inscription</a>
-					</li>
+						<li>
+							<a href="/logout">Se deconnecter</a>
+						</li>
+					{% else %}
+						<li>
+							<a href="/login">Connexion</a>
+						</li>
+						<li>
+							<a href="/signup">Inscription</a>
+						</li>
 					{% endif %}
 				</ul>
 			</details>
 		</li>
 	</ul>
 </nav>
+{# Script pour le basculement de thème, placé à la fin du fichier `navbar.html.twig` #}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', function() {
+            var body = document.body;
+            var theme = body.getAttribute('data-theme');
+            var themeIcon = document.getElementById('theme-icon');
+            if (theme === 'dark') {
+                body.setAttribute('data-theme', 'light');
+                themeIcon.innerHTML = '☼'; // Soleil
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.innerHTML = '&#9790;'; // Lune
+            }
+        });
+    });
+</script>

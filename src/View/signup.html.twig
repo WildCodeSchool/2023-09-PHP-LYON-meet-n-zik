@@ -1,76 +1,74 @@
 {% extends 'layout.html.twig' %}
-
 {% block content %}
-	<div class="container sign-up-page">
+    <div class="container sign-up-page">
+        {% for error in errors %}
+            <article>
+                <header>
+                    Vérifier les informations saisies
+                </header>
+                <ul>
+                    <li>{{ error }}</li>
+                </ul>
+            </article>
+        {% endfor %}
+        <h2>Page d'inscription</h2>
+        <div class="choose-form">
+            <button id="btn1">Hôte</button>
+            <button id="btn2">Musicien</button>
+        </div>
+        <div id="form-container">
+            <form action="" method="post" id="form1">
+                <h4>Espace d'inscription hôte</h4>
+                <fieldset>
+                    <label for="host-name">Votre identifiant :
+                    </label>
+                    <input type="text" id="name" name="name" required placeholder="Julien">
+                </fieldset>
+                <label for="email">Votre email :
+                </label>
+                <input type="email" id="email" name="email" required placeholder="lamarquise@gmail.com">
+                <fieldset>
+                    <label for="host-password">Votre mot de passe :
+                    </label>
+                    <input type="password" id="password" name="password" minlength="8" required>
+                </fieldset>
+                <fieldset>
+                    <label for="password">Confirmation du mot de passe :
+                    </label>
+                    <input type="password" id="confirm-password" name="confirm-password" minlength="8" required>
+                    <input type="hidden" id="1" name="user_type_id" value="1">
+                </fieldset>
+                <div class="buttons-line">
+                    <button type="submit">Connexion</button>
+                </div>
+            </form>
+            <form action="" method="post" id="form2">
+                <h4>Espace d'inscription musicien</h4>
+                <fieldset>
+                    <label for="band-name">Votre identifiant :
+                    </label>
+                    <input type="text" id="name" name="name" required placeholder="Salt">
+                </fieldset>
+                <label for="email">Votre email :
+                </label>
+                <input type="email" id="email" name="email" required placeholder="saltgeneration@live.fr">
+                <fieldset>
+                    <label for="band-password">Votre mot de passe :
+                    </label>
+                    <input type="password" id="password" name="password" minlength="8" required>
+                </fieldset>
+                <fieldset>
+                    <label for="band-password">Confirmation du mot de passe :
+                    </label>
+                    <input type="password" id="band-password" name="password" minlength="8" required>
+                    <input type="hidden" id="2" name="user_type_id" value="2">
+                </fieldset>
+                <div class="buttons-line">
+                    <button type="submit">Connexion</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-		{% for error in errors %}
-			<article>
-				<header>
-					Vérifier les informations saisies
-				</header>
-				<ul>
-					<li>{{ error }}</li>
-				</ul>
-			</article>
-		{% endfor %}
-		<h2>Page d'inscription</h2>
-		<div class="choose-form">
-			<button id="btn1">Hôte</button>
-			<button id="btn2">Musicien</button>
-		</div>
-		<div id="form-container">
-			<form action="" method="post" id="form1">
-				<h4>Espace d'inscription hôte</h4>
-				<fieldset>
-					<label for="host-name">Votre identifiant :
-					</label>
-					<input type="text" id="name" name="name" required placeholder="Julien">
-				</fieldset>
-				<label for="email">Votre email :
-				</label>
-				<input type="email" id="email" name="email" required placeholder="lamarquise@gmail.com">
-				<fieldset>
-					<label for="host-password">Votre mot de passe :
-					</label>
-					<input type="password" id="password" name="password" minlength="8" required>
-				</fieldset>
-				<fieldset>
-					<label for="password">Confirmation du mot de passe :
-					</label>
-					<input type="password" id="confirm-password" name="confirm-password" minlength="8" required>
-					<input type="hidden" id="1" name="user_type_id" value="1">
-				</fieldset>
-				<div class="buttons-line">
-					<button type="submit">Connexion</button>
-				</div>
-			</form>
-			<form action="" method="post" id="form2">
-				<h4>Espace d'inscription musicien</h4>
-				<fieldset>
-					<label for="band-name">Votre identifiant :
-					</label>
-					<input type="text" id="name" name="name" required placeholder="Salt">
-				</fieldset>
-				<label for="email">Votre email :
-				</label>
-				<input type="email" id="email" name="email" required placeholder="saltgeneration@live.fr">
-				<fieldset>
-					<label for="band-password">Votre mot de passe :
-					</label>
-					<input type="password" id="password" name="confirm-password" minlength="8" required>
-				</fieldset>
-				<fieldset>
-					<label for="band-password">Confirmation du mot de passe :
-					</label>
-					<input type="password" id="band-password" name="password" minlength="8" required>
-					<input type="hidden" id="2" name="user_type_id" value="2">
-				</fieldset>
-				<div class="buttons-line">
-					<button type="submit">Connexion</button>
-				</div>
-			</form>
-		</div>
-	</div>
 {% endblock %}
-
 {% block javascript %}{% endblock %}
