@@ -1,7 +1,9 @@
 <nav class="container-fluid">
 	<ul>
 		<li>
-			<strong><a href="/">Meet'n Zik</a></strong>
+			<strong>
+				<a href="/">Meet'n Zik</a>
+			</strong>
 		</li>
 	</ul>
     {% if user %}
@@ -28,25 +30,28 @@
 						<a href="/">Accueil</a>
 					</li>
 					{% if user %}
-					<li>
-						<a href="/account">Mon profil</a>
-					</li>
-					<li>
-						<a href="/account/edit/?id={{ user.id }}">Edition profil</a>
-					</li>
-					<li>
+						<li>
+							<a href="/account">Mon profil</a>
+						</li>
+						<li>
+							<a href="/account/edit/?id={{ user.id }}">Edition profil</a>
+						</li>
+						<li>
+							<a href="/my-matches">Mes favoris</a>
+						</li>
+						<li>
 						<a href="/meet">Meet</a>
 					</li>
-					<li>
-						<a href="/logout">Se deconnecter</a>
-					</li>
-                    {% else %}
-                    <li>
-						<a href="/login">Connexion</a>
-					</li>
-					<li>
-						<a href="/signup">Inscription</a>
-					</li>
+						<li>
+							<a href="/logout">Se deconnecter</a>
+						</li>
+					{% else %}
+						<li>
+							<a href="/login">Connexion</a>
+						</li>
+						<li>
+							<a href="/signup">Inscription</a>
+						</li>
 					{% endif %}
 				</ul>
 			</details>
