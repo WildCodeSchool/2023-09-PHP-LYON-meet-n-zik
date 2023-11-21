@@ -35,19 +35,24 @@ class MatchController extends AbstractController
     }
 
 
-   public function denyAccessUnlessLoggedIn(): void
+    public function denyAccessUnlessLoggedIn(): void
     {
     }
 
-   public function isUserPartOfMatch(int $matchId, int $userId): bool
+    public function isUserPartOfMatch(int $matchId, int $userId): bool
     {
     }
-    
-    public function addMatch(int $targetId) 
+
+    public function likingUser(int $targetId)
     {
-        $userManager = new UserManager();
-        $userManager->likedAsHost($_SESSION['user_id'], $targetId);
-        // $userManager->selectAllBand();
-        echo $_SESSION['user_id'];
+        header('Content-Type: application/json');
+        try {
+            $userManager = new UserManager();
+            $userManager->likedAsHost($_SESSION['user_id'], $targetId);
+            echo json_encode(['status' => 'success', 'message' => 'Match added successfully']);
+        } catch (Exception $e) {
+            http_response_code(500); // Internal Server Error
+            echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
+        }
     }
 }

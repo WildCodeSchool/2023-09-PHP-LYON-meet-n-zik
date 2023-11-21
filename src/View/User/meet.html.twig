@@ -106,29 +106,36 @@ allCards.forEach(function (el) {
 });
 
 function createButtonListener(love) {
-  return function (event) {
+  return async function (event) {
     let cards = document.querySelectorAll('.tinder--card:not(.removed)');
     let moveOutWidth = document.body.clientWidth * 1.5;
 
     if (!cards.length) return false;
 
     let card = cards[0];
-
     card.classList.add('removed');
+    let transformValue = love ? `translate(${moveOutWidth}px, -100px) rotate(-30deg)` : `translate(-${moveOutWidth}px, -100px) rotate(30deg)`;
+    card.style.transform = transformValue;
 
     if (love) {
-      card.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
       let targetId = card.getAttribute('value');
-      fetch('/matches?targetId=' + targetId)
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch((err) => console.error(err));
-    } else {
-      card.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
+      try {
+        let response = await fetch('/liking?targetId=' + targetId);
+        let data = await response.json();
+        if (response.ok) {
+          console.log('Success:', data.message);
+          // Handle success (e.g., display a success message)
+        } else {
+          console.error('Error:', data.message);
+          // Handle server-side failure (e.g., display an error message)
+        }
+      } catch (error) {
+        console.error('Network error:', error);
+        // Handle network errors (e.g., display a network error message)
+      }
     }
 
     initCards();
-
     event.preventDefault();
   };
 }
