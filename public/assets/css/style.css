@@ -107,8 +107,9 @@ nav ul:nth-of-type(2){
   }
 
   /* user-profil.html.twig & edit-user-profil*/
-.profil-page h3, .edit-page h3{
+.profil-page h3, .edit-page h3, .matches-page h2{
     margin: 32px;
+    text-align: center;
 }
 
 article {
@@ -209,7 +210,7 @@ iframe{
         width: 73%;
     }
 
-    .profil-page article {
+    .profil-page article, .matches-page article{
         margin: 32px auto;
         width: 73%;
     }
