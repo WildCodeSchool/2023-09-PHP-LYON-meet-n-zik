@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Controller;
+
 use App\Controller\AbstractController;
 use App\Model\UserManager;
 
 class InteractionController extends AbstractController
-
-
 {
     public function interact()
     {
@@ -16,7 +15,7 @@ class InteractionController extends AbstractController
             }
 
 
-            $userId = $_POST['userId'] ?? null;
+
             $action = $_POST['action'] ?? null;
 
 
@@ -44,4 +43,3 @@ class InteractionController extends AbstractController
         return $this->twig->render('User/meet.html.twig');
     }
 }
-
