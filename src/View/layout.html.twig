@@ -6,11 +6,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="/assets/images/favicon.png">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+		<link rel="script" href="https://hammerjs.github.io/dist/hammer.min.js">
 		<title>
 			{% block title %}Meet & zik{% endblock %}
 		</title>
 		<link rel="stylesheet" href="/assets/css/style.css"> 
 		{% block stylesheet %}{% endblock %}
+		<script src="https://kit.fontawesome.com/b0fe03b679.js" crossorigin="anonymous"></script>
 	</head>
 
 		<body class="container-fluid">
@@ -22,5 +24,7 @@
 			
 			{% block javascript %}{% endblock %}
 			<script src="/assets/script.js"></script>
-		</body>
-</html>
+			<script src="/assets/hammer.min.js"></script>
+
+			</body>
+		</html>

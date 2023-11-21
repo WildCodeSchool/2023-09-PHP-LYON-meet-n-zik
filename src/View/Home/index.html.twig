@@ -1,9 +1,13 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-
+    <!-- La flèche pour le scroll smooth  -->
+    <div class="scroll-down">
+    </div>
+</section>
 <!-- Section vidéo d'en-tête -->
 <section class="video-header">
+    <h1 class="video-title">MEET'N'ZIK</h1>
     <video autoplay muted loop id="heroVideo">
         <source src="/assets/videos/header-video.mp4" type="video/mp4">
         Votre navigateur ne prend pas en charge la vidéo.
@@ -11,42 +15,30 @@
 </section>
 
 <!-- Bouton pour accéder à la page "meet" -->
-<section class="find-section">
+
+<section id="meet-button-section" class="find-button-section">
     <div class="find-button">
-        <a href="/meet" class="btn">🔍</a>
+    {% if user %}
+        <a href='/meet' class="btn-meet">🔍</a>
+        {% else %}
+        <a href='/login' class="btn-meet">🔍</a>
+        {% endif %}
     </div>
 </section>
 
-<!-- Section des groupes à découvrir -->
-<section class="bands-section">
-    <h2>Les groupes à découvrir</h2>
-    <div class="bands-list">
-        {% for band in bands %}
-        <div class="band-item">
-            <img src="{{ band.image_url }}" alt="{{ band.name }}">
-            <h3>{{ band.name }}</h3>
-            <p>Genre : {{ band.style_name }}</p>
-            <p>Statut : {{ band.status_name }}</p>
-            <a href="/band/show/{{ band.id }}">Voir le groupe</a>
-        </div>
-        {% endfor %}
-    </div>
-</section>
 
-<!-- Section des salles à découvrir -->
-<section class="places-section">
-    <h2>Les salles à découvrir</h2>
-    <div class="places-list">
-        {% for place in places %}
-        <div class="place-item">
-            <img src="{{ place.image_url }}" alt="{{ place.name }}">
-            <h3>{{ place.name }}</h3>
-            <p>Genre : {{ place.style_name }}</p>
-            <p>Statut : {{ place.status_name }}</p>
-            <a href="/host/show/{{ place.id }}">Voir la salle</a>
-        </div>
-        {% endfor %}
-    </div>
-</section>
+ {% if user %}
+    <ul>
+		<li>
+			<strong>Bienvenue {{ user.user_type_id|capitalize }}</strong>
+		</li>
+	</ul>
+    {% endif %}
+
+{% for user in users %}
+<article>
+    <p> {{ user.user_name }}</p>
+</article>
+{% endfor %}
 
 {% endblock %}

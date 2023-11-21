@@ -6,14 +6,21 @@
 			</strong>
 		</li>
 	</ul>
-	{% if user %}
-		<ul>
-			<li>
-				<strong>Bienvenue
-					{{ user.user_name|capitalize }}</strong>
-			</li>
-		</ul>
-	{% endif %}
+    {% if user %}
+    <ul>
+		<li>
+			<strong>Bienvenue {{ user.user_name|capitalize }}</strong>
+		</li>
+	</ul>
+    {% endif %}
+	    <!-- Bouton de changement de thème -->
+	<ul>
+	<li>
+	<button id="theme-toggle">
+        <span id="theme-icon" class="theme-icon">☼</span> <!-- Soleil -->
+    </button>
+	</li>
+	</ul>
 	<ul>
 		<li>
 			<details role="list" dir="rtl">
@@ -33,6 +40,9 @@
 							<a href="/my-matches">Mes favoris</a>
 						</li>
 						<li>
+						<a href="/meet">Meet</a>
+					</li>
+						<li>
 							<a href="/logout">Se deconnecter</a>
 						</li>
 					{% else %}
@@ -48,3 +58,21 @@
 		</li>
 	</ul>
 </nav>
+{# Script pour le basculement de thème, placé à la fin du fichier `navbar.html.twig` #}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', function() {
+            var body = document.body;
+            var theme = body.getAttribute('data-theme');
+            var themeIcon = document.getElementById('theme-icon');
+            if (theme === 'dark') {
+                body.setAttribute('data-theme', 'light');
+                themeIcon.innerHTML = '☼'; // Soleil
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.innerHTML = '&#9790;'; // Lune
+            }
+        });
+    });
+</script>
