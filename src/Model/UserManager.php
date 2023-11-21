@@ -80,15 +80,23 @@ class UserManager extends AbstractManager
 
     public function matchedIndex($userId): array
     {
-        $statement = $this->pdo->prepare("SELECT DISTINCT user_name, email, description, video FROM meet
+        $statement = $this->pdo->prepare("SELECT DISTINCT user.id, user_name, email, description, video FROM meet
         INNER JOIN user ON user.id=meet.user_id
         WHERE (user_id != :user_id)
         AND (user_target_id = :user_id)");
-        $statement->bindParam(':user_id', $userId);
+        $statement->bindValue(':user_id', $userId);
         $statement->execute();
 
         $matches = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         return $matches;
+    }
+
+    public function likeBack($userId, $targetId): void
+    {
+        $stmt = $this->pdo->prepare("INSERT INTO meet (user_id, user_target_id) VALUES (:userId, :targetId)");
+        $stmt->bindValue(':userId', $userId);
+        $stmt->bindValue(':targetId', $targetId);
+        $stmt->execute();
     }
 }

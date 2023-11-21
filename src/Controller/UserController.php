@@ -137,12 +137,17 @@ class UserController extends AbstractController
             $userManager = new UserManager();
             $user = $userManager->selectOneById($_SESSION['user_id']);
 
-            if ($user) {
-                $userManager = new UserManager();
-                $matches = $userManager->matchedIndex($user['id']);
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $data = $_POST;
 
-                return $this->twig->render('User/user-matches.html.twig', ['matchess' => $matches]);
+                $userManager->likeBack($user['id'], $data['targetId']);
             }
+
+            $userManager = new UserManager();
+            $matches = $userManager->matchedIndex($user['id']);
+
+
+            return $this->twig->render('User/user-matches.html.twig', ['matchess' => $matches]);
         } else {
             header('Location: /login');
             die();

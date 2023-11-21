@@ -13,12 +13,16 @@
 					{% set embedLink = 'https://www.youtube.com/embed/' ~ videoId %}
 
 					<iframe src="{{ embedLink }}"></iframe>
+					<p>{{ match.email }}</p>
+					<p>{{ match.description }}</p>
 				{% else %}
 					<p>Aucune vidéo disponible pour cet utilisateur.</p>
 				{% endif %}
 				<footer>
-					<p>{{ match.email }}</p>
-					<p>{{ match.description }}</p>
+					<form action="" method="post">
+						<input type="hidden" name="targetId" value={{match.id}}>
+						<input type="submit" value="J'aime en retour">
+					</form>
 				</footer>
 			</article>
 		{% endfor %}
