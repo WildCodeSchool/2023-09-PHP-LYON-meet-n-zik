@@ -80,8 +80,10 @@ class UserManager extends AbstractManager
 
     public function matchedIndex($userId): array
     {
-        $statement = $this->pdo->prepare("SELECT * FROM meet 
-        WHERE (host_user_id = :user_id OR musician_user_id = :user_id) AND matched = 'true'");
+        $statement = $this->pdo->prepare("SELECT DISTINCT user_name, email, description, video FROM meet
+        INNER JOIN user ON user.id=meet.user_id
+        WHERE (user_id != :user_id)
+        AND (user_target_id = :user_id)");
         $statement->bindParam(':user_id', $userId);
         $statement->execute();
 
