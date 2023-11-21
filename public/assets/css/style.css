@@ -353,6 +353,19 @@ iframe {
     margin: 40px auto;
 }
 
+  /*************************/
+
+/* user-matches.html.twig */
+
+.matches-page p {
+    margin: 24px;
+}
+
+.matches-page form {
+    width: 60%;
+    margin: 40px auto;
+}
+
 /*************************/
 
 /* MEDIA QUERIES */
