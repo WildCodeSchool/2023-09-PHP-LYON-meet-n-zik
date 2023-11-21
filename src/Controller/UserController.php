@@ -143,6 +143,9 @@ class UserController extends AbstractController
 
                 return $this->twig->render('User/user-matches.html.twig', ['matchess' => $matches]);
             }
+        } else {
+            header('Location: /login');
+            die();
         }
     }
 }
